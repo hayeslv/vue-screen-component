@@ -1,0 +1,30 @@
+{
+  "name": "vites",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.2.25",
+    "vue-router": "^4.0.14"
+  },
+  "devDependencies": {
+    "@hayeslv/eslint-config": "^0.1.2",
+    "@types/node": "^17.0.21",
+    "@vitejs/plugin-vue": "^2.2.0",
+    "eslint": "^8.11.0",
+    "typescript": "^4.5.4",
+    "unplugin-auto-import": "^0.6.6",
+    "unplugin-vue-components": "^0.18.0",
+    "vite": "^2.8.0",
+    "vue-tsc": "^0.29.8"
+  },
+  "eslintConfig": {
+    "extends": "@hayeslv",
+    "rules": {
+    }
+  }
+}
