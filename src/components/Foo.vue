@@ -7,5 +7,7 @@
 </script>
 
 <style lang="scss" scoped>
-
+.test{
+  color: $default-color;
+}
 </style>
