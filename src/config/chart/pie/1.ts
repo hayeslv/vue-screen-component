@@ -1,6 +1,7 @@
 import type { EChartOption } from "echarts";
 import { colorList } from "~/config/common";
 import { extend, _innerPie } from "~/utils";
+import { defaultBackgroundColor, defaultTooltip } from "./defaultOptions";
 
 interface ChartDataList {
   name: string
@@ -17,11 +18,12 @@ const getDataList = (dataList: Array<ChartDataList>) => {
 
 export const getOption = (dataList: Array<ChartDataList>, params: EChartOption = {}) => {
   const { seriesData, legendData } = getDataList(dataList);
-  const totalNumber = 999;
+  const totalNumber = dataList.map(v => v.value).reduce((pre, cur) => pre + cur, 0);
   const title = "总数(件)";
 
   const options: EChartOption = {
-    backgroundColor: "transparent",
+    backgroundColor: defaultBackgroundColor,
+    tooltip: defaultTooltip,
     title: {
       text: `{name|${title}}\n{value|${totalNumber}}`,
       top: "center",
@@ -42,19 +44,6 @@ export const getOption = (dataList: Array<ChartDataList>, params: EChartOption =
         },
       },
       textAlign: "center",
-    },
-    tooltip: {
-      trigger: "item",
-      borderColor: "rgba(255,255,255,.3)",
-      backgroundColor: "rgba(13,5,30)",
-      borderWidth: 1,
-      padding: 5,
-      formatter: function(parms: any) {
-        const str = parms.marker + "" + parms.data.name + "</br>" +
-                "数量：" + parms.data.value + "件</br>" +
-                "占比：" + parms.percent + "%";
-        return str;
-      },
     },
     legend: {
       type: "scroll",

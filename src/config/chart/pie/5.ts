@@ -1,6 +1,7 @@
 import type { EChartOption } from "echarts";
 import { colorList } from "~/config/common";
 import { extend, chartConfigChangeSize } from "~/utils";
+import { defaultBackgroundColor, defaultTooltip } from "./defaultOptions";
 
 interface ChartDataList {
   name: string
@@ -14,11 +15,8 @@ interface OptionConfig {
 export function getOption(dataList: Array<ChartDataList>, params: EChartOption = {}, config: OptionConfig = {}): EChartOption {
   const { fontsize } = config;
   const options: EChartOption = {
-    backgroundColor: "transparent",
-    tooltip: {
-      trigger: "item",
-      formatter: "{b} : {c} ({d}%)",
-    },
+    backgroundColor: defaultBackgroundColor,
+    tooltip: defaultTooltip,
     color: colorList,
     legend: {
       orient: "horizontal",
