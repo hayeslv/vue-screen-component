@@ -1,7 +1,7 @@
 import type { EChartOption } from "echarts";
 import { colorList } from "~/config/common";
 import { extend, _innerPie } from "~/utils";
-import { defaultBackgroundColor, defaultTooltip } from "./defaultOptions";
+import { defaultBackgroundColor, defaultTooltip, getInnerPie } from "./defaultOptions";
 
 interface ChartDataList {
   name: string
@@ -109,22 +109,7 @@ export const getOption = (dataList: Array<ChartDataList>, params: EChartOption =
         },
         data: seriesData,
       },
-      {
-        type: "pie",
-        zlevel: 3,
-        silent: true,
-        center: ["30%", "50%"],
-        radius: ["52%", "56%"],
-        label: {
-          normal: {
-            show: false,
-          },
-        },
-        labelLine: {
-          show: false,
-        },
-        data: _innerPie(),
-      },
+      getInnerPie(["30%", "50%"], ["52%", "56%"]),
     ],
   };
   return extend(options, params);

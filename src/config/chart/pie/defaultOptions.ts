@@ -5,7 +5,7 @@
  */
 
 import type { EChartOption } from "echarts";
-import { extend } from "~/utils";
+import { extend, _innerPie } from "~/utils";
 
 /**
  * 默认背景
@@ -38,4 +38,29 @@ export const defaultTooltip: EChartOption.Tooltip = {
  */
 export const extendTooltip = (tooltip: EChartOption.Tooltip) => {
   return extend({}, defaultTooltip, tooltip);
+};
+
+/**
+ * 获取内圈
+ * @param center 圆心
+ * @param radius 半径
+ * @returns
+ */
+export const getInnerPie = (center: string[], radius: string[]) => {
+  return {
+    type: "pie",
+    zlevel: 3,
+    silent: true,
+    center, // 例：["30%", "50%"]
+    radius, // 例：["52%", "56%"]
+    label: {
+      normal: {
+        show: false,
+      },
+    },
+    labelLine: {
+      show: false,
+    },
+    data: _innerPie(),
+  };
 };
