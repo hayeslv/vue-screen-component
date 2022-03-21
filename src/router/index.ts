@@ -7,6 +7,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "Home",
     component: () => import("~/pages/echart/index.vue"),
   },
+  {
+    path: "/pie",
+    name: "Pie",
+    component: () => import("~/pages/pie/index.vue"),
+  },
 ];
 
 const router = createRouter({

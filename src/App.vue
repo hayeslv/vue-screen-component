@@ -4,7 +4,6 @@
 
 <template>
   <router-view />
-  <Foo />
 </template>
 
 <style lang="scss">

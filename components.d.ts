@@ -4,6 +4,7 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    Echart: typeof import('./src/components/Echart.vue')['default']
     Foo: typeof import('./src/components/Foo.vue')['default']
   }
 }
