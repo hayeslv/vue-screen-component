@@ -1,26 +1,25 @@
 import type { EChartOption } from "echarts";
-
-const colorList = ["#009DFF", "#11C372", "#FDAD43", "#FF4F5C", "#8560FF", "#FF7951", "#93CB23", "#00CAB5", "#5B76FF", "#D343DA"];
+import { colorList } from "~/config/common";
+import { extend, chartConfigChangeSize } from "~/utils";
 
 interface ChartDataList {
   name: string
   value: number
 }
 
-export function getOption(dataList: Array<ChartDataList>): EChartOption {
-  return {
+interface OptionConfig {
+  fontsize?: number
+}
+
+export function getOption(dataList: Array<ChartDataList>, params: EChartOption = {}, config: OptionConfig = {}): EChartOption {
+  const { fontsize } = config;
+  const options: EChartOption = {
     backgroundColor: "transparent",
     tooltip: {
       trigger: "item",
       formatter: "{b} : {c} ({d}%)",
     },
     color: colorList,
-    visualMap: [
-      {
-        show: false,
-        inRange: {},
-      },
-    ],
     legend: {
       orient: "horizontal",
       type: "scroll",
@@ -28,12 +27,12 @@ export function getOption(dataList: Array<ChartDataList>): EChartOption {
       icon: "circle",
       top: "bottom",
       left: "center",
-      itemWidth: 12,
-      itemHeight: 12,
-      itemGap: 8,
+      itemWidth: chartConfigChangeSize(12, fontsize),
+      itemHeight: chartConfigChangeSize(12, fontsize),
+      itemGap: chartConfigChangeSize(8, fontsize),
       textStyle: {
         color: "#fff",
-        fontSize: 12,
+        fontSize: chartConfigChangeSize(12, fontsize),
         borderWidth: 0,
       },
     },
@@ -50,14 +49,14 @@ export function getOption(dataList: Array<ChartDataList>): EChartOption {
           rich: {
             c: {
               color: "rgb(241,246,104)",
-              fontSize: 20,
+              fontSize: chartConfigChangeSize(20, fontsize),
               fontWeight: "bold",
-              lineHeight: 5,
+              lineHeight: chartConfigChangeSize(5, fontsize),
             },
             b: {
               color: "rgb(98,137,169)",
-              fontSize: 15,
-              height: 40,
+              fontSize: chartConfigChangeSize(16, fontsize),
+              height: chartConfigChangeSize(40, fontsize),
             },
           },
         },
@@ -80,4 +79,5 @@ export function getOption(dataList: Array<ChartDataList>): EChartOption {
       },
     }],
   };
+  return extend(options, params);
 }

@@ -28,7 +28,6 @@ const clearEchart = () => {
 };
 
 watch(() => props.option, (newVal) => {
-  console.log(newVal);
   echartRender();
 }, { deep: true });
 onMounted(() => {
