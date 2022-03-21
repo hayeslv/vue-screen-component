@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getOption1 as getOption } from "~/config/chart/pie";
+import { getOption5 as getOption } from "~/config/chart/pie";
 
 const demoList = [
   { name: "数字城管", value: 14 },

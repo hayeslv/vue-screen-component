@@ -1,39 +1,20 @@
 import type { EChartOption } from "echarts";
 import { colorList } from "~/config/common";
 import { extend, chartConfigChangeSize } from "~/utils";
-import { defaultBackgroundColor, defaultTooltip } from "./defaultOptions";
-
-interface ChartDataList {
-  name: string
-  value: number
-}
+import { defaultBackgroundColor, defaultTooltip, getLegend } from "./defaultOptions";
+import type { PieDataType } from "./type";
 
 interface OptionConfig {
   fontsize?: number
 }
 
-export function getOption(dataList: Array<ChartDataList>, params: EChartOption = {}, config: OptionConfig = {}): EChartOption {
+export function getOption(dataList: Array<PieDataType>, params: EChartOption = {}, config: OptionConfig = {}): EChartOption {
   const { fontsize } = config;
   const options: EChartOption = {
     backgroundColor: defaultBackgroundColor,
     tooltip: defaultTooltip,
     color: colorList,
-    legend: {
-      orient: "horizontal",
-      type: "scroll",
-      show: true,
-      icon: "circle",
-      top: "bottom",
-      left: "center",
-      itemWidth: chartConfigChangeSize(12, fontsize),
-      itemHeight: chartConfigChangeSize(12, fontsize),
-      itemGap: chartConfigChangeSize(8, fontsize),
-      textStyle: {
-        color: "#fff",
-        fontSize: chartConfigChangeSize(12, fontsize),
-        borderWidth: 0,
-      },
-    },
+    legend: getLegend(dataList, "bottom"),
     series: [{
       name: "访问来源",
       type: "pie",

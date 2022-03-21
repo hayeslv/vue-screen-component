@@ -1,29 +1,17 @@
 import type { EChartOption } from "echarts";
 import { colorList } from "~/config/common";
-import { extend, _innerPie } from "~/utils";
-import { defaultBackgroundColor, defaultTooltip, getInnerPie } from "./defaultOptions";
+import { extend } from "~/utils";
+import { defaultBackgroundColor, defaultTooltip, getInnerPie, getLegend } from "./defaultOptions";
+import type { PieDataType } from "./type";
 
-interface ChartDataList {
-  name: string
-  value: number
-  itemStyle?: any
-}
-
-const getDataList = (dataList: Array<ChartDataList>) => {
-  let seriesData: Array<ChartDataList> = []; let legendData: Array<string> = [];
-  seriesData = dataList;
-  legendData = dataList.map(item => item.name);
-  return { seriesData, legendData };
-};
-
-export const getOption = (dataList: Array<ChartDataList>, params: EChartOption = {}) => {
-  const { seriesData, legendData } = getDataList(dataList);
+export const getOption = (dataList: Array<PieDataType>, params: EChartOption = {}) => {
   const totalNumber = dataList.map(v => v.value).reduce((pre, cur) => pre + cur, 0);
   const title = "总数(件)";
 
   const options: EChartOption = {
     backgroundColor: defaultBackgroundColor,
     tooltip: defaultTooltip,
+    legend: getLegend(dataList),
     title: {
       text: `{name|${title}}\n{value|${totalNumber}}`,
       top: "center",
@@ -44,32 +32,6 @@ export const getOption = (dataList: Array<ChartDataList>, params: EChartOption =
         },
       },
       textAlign: "center",
-    },
-    legend: {
-      type: "scroll",
-      orient: "vertical",
-      left: "55%",
-      align: "left",
-      top: "middle",
-      icon: "circle",
-      formatter: function(name: any) {
-        const item = seriesData.filter(item => item.name === name)[0];
-        return `{name|${item.name}}{value|${item.value}}`;
-      },
-      textStyle: {
-        color: "#fff",
-        rich: {
-          name: {
-            width: 110,
-            fontSize: 16,
-          },
-          value: {
-            width: 100,
-            fontSize: 16,
-          },
-        },
-      },
-      data: legendData,
     },
     series: [
       {
@@ -107,7 +69,7 @@ export const getOption = (dataList: Array<ChartDataList>, params: EChartOption =
             },
           },
         },
-        data: seriesData,
+        data: dataList,
       },
       getInnerPie(["30%", "50%"], ["52%", "56%"]),
     ],

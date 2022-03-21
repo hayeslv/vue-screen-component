@@ -5,7 +5,11 @@
  */
 
 import type { EChartOption } from "echarts";
-import { extend, _innerPie } from "~/utils";
+import { chartConfigChangeSize, extend, _innerPie } from "~/utils";
+import type { LegendLocation, PieDataType } from "./type";
+
+// fontsize基位，基于1920*1080。大屏根据具体情况进行调整
+const baseFontSize = 12;
 
 /**
  * 默认背景
@@ -50,7 +54,7 @@ export const getInnerPie = (center: string[], radius: string[]) => {
   return {
     type: "pie",
     zlevel: 3,
-    silent: true,
+    silent: true, // 图形是否不响应和触发鼠标事件，默认为 false，即响应和触发鼠标事件。
     center, // 例：["30%", "50%"]
     radius, // 例：["52%", "56%"]
     label: {
@@ -63,4 +67,63 @@ export const getInnerPie = (center: string[], radius: string[]) => {
     },
     data: _innerPie(),
   };
+};
+
+/**
+ * 获取饼图Legend
+ * @param dataList [{name:..., value:...}]
+ * @returns legendOption
+ */
+export const getLegend = (dataList: PieDataType[], type: LegendLocation = "right") => {
+  let legend: EChartOption.Legend = {};
+  if (type === "right") {
+    legend = {
+      type: "scroll",
+      orient: "vertical",
+      left: "55%",
+      align: "left",
+      top: "middle",
+      icon: "circle",
+      formatter: function(name: any) {
+        const item = dataList.find(item => item.name === name);
+        if (!item) return "";
+        return `{name|${item.name}}{value|${item.value}}`;
+      },
+      textStyle: {
+        color: "#fff",
+        rich: {
+          name: {
+            width: chartConfigChangeSize(110, baseFontSize),
+            fontSize: chartConfigChangeSize(16, baseFontSize),
+          },
+          value: {
+            width: chartConfigChangeSize(100, baseFontSize),
+            fontSize: chartConfigChangeSize(16, baseFontSize),
+          },
+        },
+      },
+      data: dataList.map(item => item.name),
+    };
+  }
+
+  if (type === "bottom") {
+    legend = {
+      orient: "horizontal",
+      type: "scroll",
+      show: true,
+      icon: "circle",
+      top: "bottom",
+      left: "center",
+      itemWidth: chartConfigChangeSize(12, baseFontSize),
+      itemHeight: chartConfigChangeSize(12, baseFontSize),
+      itemGap: chartConfigChangeSize(8, baseFontSize),
+      textStyle: {
+        color: "#fff",
+        fontSize: chartConfigChangeSize(12, baseFontSize),
+        borderWidth: 0,
+      },
+    };
+  }
+
+  return legend;
 };
