@@ -5,6 +5,13 @@ import VueJsx from "@vitejs/plugin-vue-jsx";
 import AutoImport from "unplugin-auto-import/vite";
 
 export default defineConfig({
+  build: {
+    lib: {
+      entry: "./packages/index.ts",
+      name: "HayUI",
+      fileName: "screen-comp",
+    },
+  },
   resolve: {
     alias: {
       "~": `${path.resolve(__dirname, "src")}/`,

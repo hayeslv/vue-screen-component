@@ -1,2 +1,2 @@
-# vites
-vite起手模板
+# screen-component
+大屏组件库

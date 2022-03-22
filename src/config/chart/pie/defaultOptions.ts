@@ -6,7 +6,7 @@
 
 import type { EChartOption, EChartTitleOption } from "echarts";
 import { colorList as defaultColorList } from "~/config/common";
-import { chartConfigChangeSize, extend, _innerPie } from "~/utils";
+import { chartConfigChangeSize, _innerPie } from "~/utils";
 import type { LegendLocation, PieDataType, SeriesType } from "./type";
 
 // fontsize基位，基于1920*1080。大屏根据具体情况进行调整
