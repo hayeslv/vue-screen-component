@@ -1,4 +1,5 @@
 import * as echarts from "echarts";
+import { computed, defineComponent, onMounted, onUnmounted, ref, watch } from "vue";
 
 export default defineComponent({
   name: "HayChart",
