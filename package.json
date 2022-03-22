@@ -1,13 +1,16 @@
 {
   "name": "@hayeslv/screen-comp",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "dist/screen-comp.es.js",
+  "types": "./index.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "build1": "vue-tsc --noEmit && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "release": "bumpp package.json --commit --push",
+    "publish": "pnpm publish --access public"
   },
   "dependencies": {
     "echarts": "^5.3.1",
