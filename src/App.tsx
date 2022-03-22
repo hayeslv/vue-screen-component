@@ -1,3 +1,4 @@
+import { defineComponent, ref } from "vue";
 import "./style/common.scss";
 
 export default defineComponent({

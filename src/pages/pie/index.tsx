@@ -1,3 +1,4 @@
+import { defineComponent, ref } from "vue";
 import Echart from "~/components/Echart";
 import { getOption1 as getOption } from "~/config/chart/pie";
 
