@@ -1,5 +1,5 @@
 import Echart from "~/components/Echart";
-import { getOption1 as getOption } from "~/config/chart/pie";
+import { getOption3 as getOption } from "~/config/chart/pie";
 
 const demoList = [
   { name: "数字城管", value: 14 },

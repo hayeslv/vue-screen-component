@@ -12,7 +12,7 @@ export function getOption(dataList: Array<PieDataType>, params: EChartOption = {
   const { fontsize } = config;
   const options: EChartOption = {
     backgroundColor: defaultBackgroundColor,
-    tooltip: defaultTooltip,
+    tooltip: defaultTooltip(),
     color: colorList,
     legend: getLegend(dataList, "bottom"),
     series: [{

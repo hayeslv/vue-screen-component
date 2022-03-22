@@ -1,7 +1,6 @@
 import type { EChartOption } from "echarts";
-import { colorList } from "~/config/common";
 import { extend } from "~/utils";
-import { defaultBackgroundColor, defaultTooltip, getInnerPie, getLegend, getTitle } from "./defaultOptions";
+import { defaultBackgroundColor, defaultTooltip, getInnerPie, getLegend, getSeriesItem, getTitle } from "./defaultOptions";
 import type { PieDataType } from "./type";
 
 export const getOption = (dataList: Array<PieDataType>, params: EChartOption = {}) => {
@@ -10,47 +9,11 @@ export const getOption = (dataList: Array<PieDataType>, params: EChartOption = {
 
   const options: EChartOption = {
     backgroundColor: defaultBackgroundColor,
-    tooltip: defaultTooltip,
+    tooltip: defaultTooltip(),
     legend: getLegend(dataList),
     title: getTitle(title, totalNumber),
     series: [
-      {
-        type: "pie",
-        z: 3,
-        center: ["30%", "50%"],
-        radius: ["60%", "75%"],
-        clockwise: true,
-        avoidLabelOverlap: true,
-        hoverOffset: 4,
-        itemStyle: {
-          normal: {
-            color: function(params: any) {
-              return colorList[params.dataIndex];
-            },
-          },
-        },
-        labelLine: {
-          show: false,
-        },
-        label: {
-          show: false,
-          position: "outside",
-          formatter: "{a|{b}：{d}%}\n{hr|}",
-          rich: {
-            hr: {
-              backgroundColor: "t",
-              borderRadius: 3,
-              width: 3,
-              height: 3,
-              padding: [3, 3, 0, -12],
-            },
-            a: {
-              padding: [-30, 15, -20, 15],
-            },
-          },
-        },
-        data: dataList,
-      },
+      getSeriesItem(dataList, "ring"),
       getInnerPie(["30%", "50%"], ["52%", "56%"]),
     ],
   };
