@@ -4,7 +4,7 @@
  * @Description: echart options 默认配置
  */
 
-import type { EChartOption } from "echarts";
+import type { EChartOption, EChartTitleOption } from "echarts";
 import { chartConfigChangeSize, extend, _innerPie } from "~/utils";
 import type { LegendLocation, PieDataType } from "./type";
 
@@ -126,4 +126,35 @@ export const getLegend = (dataList: PieDataType[], type: LegendLocation = "right
   }
 
   return legend;
+};
+
+/**
+ * 获取饼图Title
+ * @param title
+ * @param subTitle
+ * @returns title config
+ */
+export const getTitle = (title: string | number, subTitle: string | number) => {
+  const titleConfig: EChartTitleOption | EChartTitleOption[] | undefined = {
+    text: `{name|${title}}\n{value|${subTitle}}`,
+    top: "center",
+    left: "30%",
+    textStyle: {
+      rich: {
+        name: {
+          fontSize: 14,
+          fontWeight: "normal",
+          color: "#fff",
+          padding: [10, 0],
+        },
+        value: {
+          fontSize: 32,
+          fontWeight: "bold",
+          color: "#bbb",
+        },
+      },
+    },
+    textAlign: "center",
+  };
+  return titleConfig;
 };

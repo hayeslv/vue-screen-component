@@ -1,7 +1,7 @@
 import type { EChartOption } from "echarts";
 import { colorList } from "~/config/common";
 import { extend } from "~/utils";
-import { defaultBackgroundColor, defaultTooltip, getInnerPie, getLegend } from "./defaultOptions";
+import { defaultBackgroundColor, defaultTooltip, getInnerPie, getLegend, getTitle } from "./defaultOptions";
 import type { PieDataType } from "./type";
 
 export const getOption = (dataList: Array<PieDataType>, params: EChartOption = {}) => {
@@ -12,27 +12,7 @@ export const getOption = (dataList: Array<PieDataType>, params: EChartOption = {
     backgroundColor: defaultBackgroundColor,
     tooltip: defaultTooltip,
     legend: getLegend(dataList),
-    title: {
-      text: `{name|${title}}\n{value|${totalNumber}}`,
-      top: "center",
-      left: "30%",
-      textStyle: {
-        rich: {
-          name: {
-            fontSize: 14,
-            fontWeight: "normal",
-            color: "#fff",
-            padding: [10, 0],
-          },
-          value: {
-            fontSize: 32,
-            fontWeight: "bold",
-            color: "#bbb",
-          },
-        },
-      },
-      textAlign: "center",
-    },
+    title: getTitle(title, totalNumber),
     series: [
       {
         type: "pie",
