@@ -1,4 +1,4 @@
-<script setup lang="ts">
+import Echart from "~/components/Echart";
 import { getOption5 as getOption } from "~/config/chart/pie";
 
 const demoList = [
@@ -9,13 +9,13 @@ const demoList = [
   { name: "其他", value: 25 },
 ];
 
-const option = ref(getOption(demoList));
+export default defineComponent({
+  setup() {
+    const option = ref(getOption(demoList));
 
-</script>
-
-<template>
-  <Echart :option="option" :height="300" />
-</template>
-
-<style lang="scss" scoped>
-</style>
+    return { option };
+  },
+  render() {
+    return <Echart option={this.option} height={300} />;
+  },
+});
