@@ -1,4 +1,4 @@
-import type { EChartOption } from "echarts";
+import type { EChartsOption } from "echarts";
 
 const colorList = ["#009DFF", "#11C372", "#FDAD43", "#FF4F5C", "#8560FF", "#FF7951", "#93CB23", "#00CAB5", "#5B76FF", "#D343DA"];
 
@@ -7,7 +7,7 @@ interface ChartDataList {
   value: number
 }
 
-export function getOption(dataList: Array<ChartDataList>): EChartOption {
+export function getOption(dataList: Array<ChartDataList>): EChartsOption {
   return {
     backgroundColor: "transparent",
     tooltip: {
@@ -45,38 +45,32 @@ export function getOption(dataList: Array<ChartDataList>): EChartOption {
       data: dataList.sort((a, b) => a.value - b.value),
       roseType: "radius",
       label: {
-        normal: {
-          formatter: ["{c|{c}次}", "{b|{b}}"].join("\n"),
-          rich: {
-            c: {
-              color: "rgb(241,246,104)",
-              fontSize: 20,
-              fontWeight: "bold",
-              lineHeight: 5,
-            },
-            b: {
-              color: "rgb(98,137,169)",
-              fontSize: 15,
-              height: 40,
-            },
+        formatter: ["{c|{c}次}", "{b|{b}}"].join("\n"),
+        rich: {
+          c: {
+            color: "rgb(241,246,104)",
+            fontSize: 20,
+            fontWeight: "bold",
+            lineHeight: 5,
+          },
+          b: {
+            color: "rgb(98,137,169)",
+            fontSize: 15,
+            height: 40,
           },
         },
       },
       labelLine: {
-        normal: {
-          lineStyle: {
-            color: "transparent",
-          },
-          smooth: 0.2,
-          length: 1,
-          length2: 1,
+        lineStyle: {
+          color: "transparent",
         },
+        smooth: 0.2,
+        length: 1,
+        length2: 1,
       },
       itemStyle: {
-        normal: {
-          shadowColor: "rgba(0, 0, 0, 0.8)",
-          shadowBlur: 50,
-        },
+        shadowColor: "rgba(0, 0, 0, 0.8)",
+        shadowBlur: 50,
       },
     }],
   };

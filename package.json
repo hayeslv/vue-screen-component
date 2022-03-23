@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "release": "bumpp package.json --commit --push --tag",
-    "publish": "pnpm publish --access public"
+    "publish": "npm publish --access public"
   },
   "dependencies": {
     "echarts": "^5.3.1",

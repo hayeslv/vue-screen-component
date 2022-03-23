@@ -4,7 +4,7 @@
  * @Description: echart options 默认配置
  */
 
-import type { EChartOption, EChartTitleOption } from "echarts";
+import type { LegendComponentOption, SeriesOption, TitleComponentOption, TooltipComponentOption } from "echarts";
 import { colorList as defaultColorList } from "~/config/common";
 import { chartConfigChangeSize, _innerPie } from "~/utils";
 import type { LegendLocation, PieDataType, SeriesType } from "./type";
@@ -20,8 +20,8 @@ export const defaultBackgroundColor = "transparent";
 /**
  * 默认tooltip
  */
-export const defaultTooltip = (): EChartOption.Tooltip => {
-  const tooltipConfig: EChartOption.Tooltip = {
+export const defaultTooltip = (): TooltipComponentOption => {
+  const tooltipConfig: TooltipComponentOption = {
     trigger: "item",
     borderColor: "rgba(255,255,255,.3)",
     backgroundColor: "rgba(13,5,30)",
@@ -46,7 +46,7 @@ export const defaultTooltip = (): EChartOption.Tooltip => {
  * @param radius 半径
  * @returns
  */
-export const getInnerPie = (center: string[], radius: string[]): EChartOption.Series => {
+export const getInnerPie = (center: string[], radius: string[]): SeriesOption => {
   return {
     type: "pie",
     zlevel: 3,
@@ -54,9 +54,7 @@ export const getInnerPie = (center: string[], radius: string[]): EChartOption.Se
     center, // 例：["30%", "50%"]
     radius, // 例：["52%", "56%"]
     label: {
-      normal: {
-        show: false,
-      },
+      show: false,
     },
     labelLine: {
       show: false,
@@ -71,7 +69,7 @@ export const getInnerPie = (center: string[], radius: string[]): EChartOption.Se
  * @returns legendOption
  */
 export const getLegend = (dataList: PieDataType[], type: LegendLocation = "right") => {
-  let legend: EChartOption.Legend = {};
+  let legend: LegendComponentOption = {};
   if (type === "right") {
     legend = {
       type: "scroll",
@@ -131,7 +129,7 @@ export const getLegend = (dataList: PieDataType[], type: LegendLocation = "right
  * @returns title config
  */
 export const getTitle = (title: string | number, subTitle: string | number) => {
-  const titleConfig: EChartTitleOption | EChartTitleOption[] | undefined = {
+  const titleConfig: TitleComponentOption = {
     text: `{name|${title}}\n{value|${subTitle}}`,
     top: "center",
     left: "30%",
@@ -166,18 +164,16 @@ export const getSeriesItem = (
   dataList: Array<PieDataType>,
   type: SeriesType = "solid",
   config: { colorList?: string[] } = {},
-): EChartOption.Series => {
-  let seriesConfig: EChartOption.Series;
+): SeriesOption => {
+  let seriesConfig: SeriesOption;
   if (type === "solid") {
     seriesConfig = {
       type: "pie",
       center: ["25%", "50%"],
       avoidLabelOverlap: true, // 避免标签重叠
       itemStyle: {
-        normal: {
-          color: function(params: any) {
-            return config.colorList ? config.colorList[params.dataIndex] : defaultColorList[params.dataIndex];
-          },
+        color: function(params: any) {
+          return config.colorList ? config.colorList[params.dataIndex] : defaultColorList[params.dataIndex];
         },
       },
       labelLine: {
@@ -197,12 +193,9 @@ export const getSeriesItem = (
       radius: ["60%", "75%"],
       clockwise: true,
       avoidLabelOverlap: true,
-      hoverOffset: 4,
       itemStyle: {
-        normal: {
-          color: function(params: any) {
-            return config.colorList ? config.colorList[params.dataIndex] : defaultColorList[params.dataIndex];
-          },
+        color: function(params: any) {
+          return config.colorList ? config.colorList[params.dataIndex] : defaultColorList[params.dataIndex];
         },
       },
       labelLine: {

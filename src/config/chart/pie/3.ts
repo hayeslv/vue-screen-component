@@ -1,10 +1,10 @@
-import type { EChartOption } from "echarts";
+import type { EChartsOption } from "echarts";
 import { extend } from "~/utils";
 import { defaultBackgroundColor, defaultTooltip, getLegend, getSeriesItem } from "./defaultOptions";
 import type { PieDataType } from "./type";
 
-export const getOption = (dataList: Array<PieDataType>, params: EChartOption = {}) => {
-  const options: EChartOption = {
+export const getOption = (dataList: Array<PieDataType>, params: EChartsOption = {}) => {
+  const options: EChartsOption = {
     backgroundColor: defaultBackgroundColor,
     tooltip: extend(defaultTooltip(), {
       formatter: function(parms: any) {

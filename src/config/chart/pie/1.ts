@@ -1,13 +1,13 @@
-import type { EChartOption } from "echarts";
+import type { EChartsOption } from "echarts";
 import { extend } from "~/utils";
 import { defaultBackgroundColor, defaultTooltip, getInnerPie, getLegend, getSeriesItem, getTitle } from "./defaultOptions";
 import type { PieDataType } from "./type";
 
-export const getOption = (dataList: Array<PieDataType>, params: EChartOption = {}) => {
+export const getOption = (dataList: Array<PieDataType>, params: EChartsOption = {}) => {
   const totalNumber = dataList.map(v => v.value).reduce((pre, cur) => pre + cur, 0);
   const title = "总数(件)";
 
-  const options: EChartOption = {
+  const options: EChartsOption = {
     backgroundColor: defaultBackgroundColor,
     tooltip: defaultTooltip(),
     legend: getLegend(dataList),

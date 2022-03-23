@@ -1,6 +1,8 @@
+// import { EChartsOption } from "echarts";
+import type { Ref } from "vue";
 import { defineComponent, ref } from "vue";
 import Echart from "~/components/Echart";
-import { getOption1 as getOption } from "~/config/chart/pie";
+import { getOption5 as getOption } from "~/config/chart/pie";
 
 const demoList = [
   { name: "数字城管", value: 14 },
@@ -12,7 +14,7 @@ const demoList = [
 
 export default defineComponent({
   setup() {
-    const option = ref(getOption(demoList));
+    const option: Ref = ref(getOption(demoList));
 
     return { option };
   },
