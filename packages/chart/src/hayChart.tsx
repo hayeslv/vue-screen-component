@@ -21,7 +21,7 @@ export default defineComponent({
     const echartRender = () => {
       if (chartInstance) clearEchart();
       chartInstance = echarts.init(chartsRef.value);
-      const option: echarts.EChartsOption = props.option;
+      const option = props.option;
       chartInstance.setOption(option);
     };
     const clearEchart = () => {
