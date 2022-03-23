@@ -1,8 +1,9 @@
 // import { EChartsOption } from "echarts";
 import type { Ref } from "vue";
 import { defineComponent, ref } from "vue";
-import Echart from "~/components/Echart";
-import { getOption5 as getOption } from "~/config/chart/pie";
+import { HayChart } from "../../../lib/index";
+import { getOption5 as getOption } from "../../config/chart/pie";
+// import HayChart from "../../components/Echart";
 
 const demoList = [
   { name: "数字城管", value: 14 },
@@ -19,6 +20,6 @@ export default defineComponent({
     return { option };
   },
   render() {
-    return <Echart option={this.option} height={300} />;
+    return <HayChart option={this.option} height={300} />;
   },
 });

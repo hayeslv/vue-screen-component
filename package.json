@@ -1,8 +1,8 @@
 {
   "name": "@hayeslv/screen-comp",
   "version": "0.0.9",
-  "main": "dist/screen-comp.es.js",
-  "types": "./index.d.ts",
+  "main": "lib/index.esm.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "dev": "vite",
     "lint": "eslint .",

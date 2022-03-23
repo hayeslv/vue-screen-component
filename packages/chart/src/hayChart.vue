@@ -16,13 +16,13 @@ export default defineComponent({
       props.height && (str += `height: ${props.height}px;`);
       return str;
     });
-    let chartInstance: echarts.EChartsType | null = null;
+    let chartInstance: echarts.ECharts | null = null;
     const chartsRef = ref();
 
     const echartRender = () => {
       if (chartInstance) clearEchart();
       chartInstance = echarts.init(chartsRef.value);
-      const option: echarts.EChartsOption = props.option;
+      const option = props.option;
       chartInstance.setOption(option);
     };
     const clearEchart = () => {

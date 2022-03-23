@@ -1,4 +1,4 @@
-import { nodeResolve } from "@rollup/plugin-node-resolve"; // 告诉 Rollup 如何查找外部模块
+import nodeResolve from "@rollup/plugin-node-resolve"; // 告诉 Rollup 如何查找外部模块
 import { terser } from "rollup-plugin-terser";
 import typescript from "rollup-plugin-typescript2";
 import vue from "rollup-plugin-vue"; // 处理vue文件
