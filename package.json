@@ -1,12 +1,12 @@
 {
   "name": "@hayeslv/screen-comp",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "main": "dist/screen-comp.es.js",
   "types": "./index.d.ts",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
     "lint": "eslint .",
+    "build": "npm run build:package && npm run build:package:dts",
     "build:package": "rollup -c build/rollup.config.ts",
     "build:package:dts": "rollup -c build/rollup.config.dts.ts",
     "release": "bumpp package.json --commit --push --tag"
