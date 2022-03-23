@@ -9,8 +9,7 @@
     "lint": "eslint .",
     "build:package": "rollup -c build/rollup.config.ts",
     "build:package:dts": "rollup -c build/rollup.config.dts.ts",
-    "release": "bumpp package.json --commit --push --tag",
-    "publish": "npm publish --access public"
+    "release": "bumpp package.json --commit --push --tag"
   },
   "dependencies": {
     "echarts": "^5.3.1",
