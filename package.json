@@ -8,6 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "build:package": "rollup -c build/rollup.config.ts",
+    "build:package:dts": "rollup -c build/rollup.config.dts.ts",
     "release": "bumpp package.json --commit --push --tag",
     "publish": "npm publish --access public"
   },
