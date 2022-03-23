@@ -2,6 +2,7 @@
 import type { Ref } from "vue";
 import { defineComponent, ref } from "vue";
 import { HayChart } from "../../../lib/index";
+// import HayChart from "../../../packages/Chart/src/hayChart";
 import { getOption5 as getOption } from "../../config/chart/pie";
 // import HayChart from "../../components/Echart";
 

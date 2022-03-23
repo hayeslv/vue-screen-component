@@ -46,7 +46,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div :ref="chartsRef" class="canvas" :style="style" />
+  <div ref="chartsRef" class="canvas" :style="style" />
 </template>
 
 <style lang="scss" scoped>
