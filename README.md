@@ -4,7 +4,7 @@
 ## 安装
 
 ```bash
-npm i hay-ui
+npm i hay-ui@latest
 ```
 
 ## 使用

@@ -14,7 +14,7 @@
     "lib": ["esnext", "dom"],
     "types": ["vite/client", "node"],
     "paths": {
-      "~/*": ["src/*"]
+      "~/*": ["examples/*"]
     }
   },
   "include": [

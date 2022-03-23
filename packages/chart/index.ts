@@ -1,6 +1,5 @@
 import type { App } from "vue";
-import HayChart from "./src/hayChart";
-import type { SFCWithInstall } from "../types";
+import HayChart from "./src/hayChart.vue";
 
 // 安装
 HayChart.install = (app: App): void => {
