@@ -1,11 +1,13 @@
 import type { App } from "vue";
 
 /* 基础组件 start */
-import hayChart from "./chart";
+import HayChart from "./chart";
 /* 基础组件 end */
 
 // 所有组件
-const components: any[] = [hayChart];
+const components: any[] = [
+  HayChart,
+];
 
 /**
  * 组件注册
@@ -18,7 +20,7 @@ const install = (app: App) => {
 };
 
 export {
-  hayChart,
+  HayChart,
 };
 
 // 全部导出
