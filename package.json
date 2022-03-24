@@ -7,31 +7,31 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "pnpm --dir vite-example dev",
-    "build": "rollup -c",
+    "build": "rimraf dist/* && rollup -c",
     "start": "rimraf dist/* && rollup -c -w",
     "release": "bumpp package.json --commit --push --tag"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
+    "@hayeslv/eslint-config": "^0.1.2",
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-commonjs": "^21.0.0",
     "@rollup/plugin-node-resolve": "^13.0.2",
     "@rollup/plugin-typescript": "^8.2.5",
-    "@hayeslv/eslint-config": "^0.1.2",
     "@types/echarts": "^4.9.13",
     "@vue/babel-plugin-jsx": "^1.1.1",
+    "bumpp": "^7.1.1",
+    "echarts": "^5.3.1",
+    "eslint": "^8.11.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.53.3",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.1",
     "rollup-plugin-scss": "^3.0.0",
     "rollup-plugin-terser": "^7.0.2",
-    "bumpp": "^7.1.1",
-    "eslint": "^8.11.0",
     "sass": "^1.49.9",
     "tslib": "^2.3.0",
     "typescript": "^4.5.4",
-    "echarts": "^5.3.1",
     "vue": "^3.2.25"
   },
   "peerDependencies": {
@@ -44,7 +44,14 @@
   "eslintConfig": {
     "extends": "@hayeslv",
     "rules": {
-      "@typescript-eslint/no-use-before-define": "off"
+      "@typescript-eslint/no-use-before-define": "off",
+      "@typescript-eslint/no-var-requires": "off",
+      "@typescript-eslint/prefer-ts-expect-error": "off",
+      "@typescript-eslint/ban-ts-comment": "off",
+      "@typescript-eslint/brace-style": [
+        "error",
+        "1tbs"
+      ]
     }
   },
   "engines": {

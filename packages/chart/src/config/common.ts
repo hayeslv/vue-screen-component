@@ -29,8 +29,7 @@ export const _innerPie = (): ChartDataList[] => {
           },
         },
       });
-    }
-    else {
+    } else {
       dataArr.push({
         name: (i + 1).toString(),
         value: 5,

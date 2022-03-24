@@ -2,7 +2,7 @@ import type { Ref } from "vue";
 import { defineComponent, ref } from "vue";
 import "./style/common.scss";
 import { HayChart } from "hay-ui";
-import { getOption5 as getOption } from "./config/chart/pie";
+import { getOption3 as getOption } from "./config/chart/pie";
 
 const demoList = [
   { name: "数字城管", value: 14 },
@@ -20,7 +20,7 @@ export default defineComponent({
   },
   render() {
     return <div>
-      <HayChart option={this.option} height={300} />
+      <HayChart type={"normal"} dataList={demoList} height={300} />
     </div>;
   },
 });

@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "esnext",
+    "target": "ESNext",
+    "module": "ESNext",
     "moduleResolution": "node",
     "strict": true,
     "jsx": "preserve",
@@ -11,7 +11,11 @@
     "lib": ["esnext", "dom"],
     "declaration": true,
     "declarationDir": "./",
-    "outDir": "build"
+    "outDir": "build",
+    "typeRoots": [
+      "node_modules/@types",
+      "@types"
+    ]
   },
   "include": [
     "packages",

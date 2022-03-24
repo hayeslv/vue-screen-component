@@ -17,34 +17,32 @@ export default [
   {
     input: "packages/index.ts",
     output: [
-      {
-        name: "HayUI",
-        file: pkg.main,
-        format: "umd",
-        globals,
-      },
+      // {
+      //   name: "HayUI",
+      //   file: pkg.main,
+      //   format: "umd",
+      //   globals,
+      // },
       {
         file: pkg.module,
         format: "es",
       },
-      {
-        name: "HayUI",
-        file: pkg.unpkg,
-        format: "umd",
-        plugins: [terser()],
-        globals,
-      },
+      // {
+      //   file: pkg.main,
+      //   format: "cjs",
+      // },
+      // {
+      //   name: "HayUI",
+      //   file: pkg.unpkg,
+      //   format: "umd",
+      //   plugins: [terser()],
+      //   globals,
+      // },
     ],
     plugins: [
       external(),
       scss({
         output: "dist/index.min.css",
-      }),
-      typescript({
-        lib: ["es5", "es6", "dom"],
-        target: "es5",
-        sourceMap: false,
-        tsconfig: "./tsconfig.json",
       }),
       // typescript2({
       //   rollupCommonJSResolveHack: true,
@@ -52,7 +50,16 @@ export default [
       // }),
       babel({ babelHelpers: "bundled", extensions }),
       resolve(),
-      commonjs({ extensions }),
+      commonjs({
+        extensions,
+        transformMixedEsModules: true, // 指示插件是否启用混合模块转换。如果require调用应转换为混合模块中的导入，则设置为true；
+      }),
+      typescript({
+        lib: ["es5", "es6", "dom"],
+        target: "es6",
+        sourceMap: false,
+        tsconfig: "./tsconfig.json",
+      }),
     ],
   },
   // {
