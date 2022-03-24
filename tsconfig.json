@@ -13,6 +13,9 @@
     "declarationDir": "./",
     "outDir": "build"
   },
-  "include": ["packages"],
+  "include": [
+    "packages",
+    "typings/shims-vue.d.ts",
+  ],
   "exclude": ["node_modules", "build", "dist", "example", "rollup.config.ts"]
 }
