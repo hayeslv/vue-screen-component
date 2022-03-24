@@ -1,3 +1,4 @@
+import type { PieType, PieDataType } from "./types";
 
 export const colorList = ["#009DFF", "#11C372", "#FDAD43", "#FF4F5C", "#8560FF", "#FF7951", "#93CB23", "#00CAB5", "#5B76FF", "#D343DA"];
 
@@ -44,6 +45,22 @@ export const _innerPie = (): ChartDataList[] => {
     }
   }
   return dataArr;
+};
+
+const PieTypeMap = {
+  normal: () => require("./pie/normal"),
+  fanshaped: () => {},
+};
+
+/**
+ * 根据类型和数据获取图表config配置
+ * @param type
+ * @param dataList
+ * @returns
+ */
+export const getConfigByType = (type: PieType, dataList: PieDataType[]) => {
+  const { getOption } = PieTypeMap[type]();
+  return getOption(dataList);
 };
 
 export const extend = Object.assign;

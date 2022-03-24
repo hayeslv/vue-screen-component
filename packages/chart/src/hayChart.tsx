@@ -1,8 +1,8 @@
 import * as echarts from "echarts";
 import type { PropType } from "vue";
 import { computed, defineComponent, onMounted, onUnmounted, ref, watch } from "vue";
+import { getConfigByType } from "./config/common";
 import type { PieDataType, PieType } from "./config/types";
-import { PieChart } from "./config/types";
 
 export default defineComponent({
   name: "HayChart",
@@ -14,16 +14,12 @@ export default defineComponent({
     dataList: { type: Array as PropType<PieDataType[]>, default: null },
   },
   setup(props) {
-    const getPresetOptions = (type: PieType, dataList: PieDataType[]) => {
-      const pieChart = new PieChart(type);
-      const options = pieChart.getConfigByType(dataList);
-      console.log(options);
-    };
+    const options = ref(props.option);
     if (props.type) {
       if (!props.dataList) {
         console.error("hay-chart：dataList不能为空");
       } else {
-        getPresetOptions(props.type, props.dataList);
+        options.value = getConfigByType(props.type, props.dataList);
       }
     }
     const style = computed(() => {
@@ -38,8 +34,8 @@ export default defineComponent({
     const echartRender = () => {
       if (chartInstance) clearEchart();
       chartInstance = echarts.init(chartsRef.value);
-      const option = props.option;
-      chartInstance.setOption(option);
+      // const option = props.option;
+      chartInstance.setOption(options.value);
     };
     const clearEchart = () => {
       chartInstance && chartInstance.dispose();
