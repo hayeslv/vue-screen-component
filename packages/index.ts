@@ -1,7 +1,7 @@
 import type { App } from "vue";
 
 /* 基础组件 start */
-import HayChart from "./Chart"; // 图标
+import HayChart from "./Chart"; // 图表
 /* 基础组件 end */
 
 // 所有组件

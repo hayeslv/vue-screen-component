@@ -6,6 +6,7 @@
   "unpkg": "dist/index.min.js",
   "types": "dist/index.d.ts",
   "scripts": {
+    "dev": "pnpm --dir vite-example dev",
     "build": "rollup -c",
     "start": "rimraf dist/* && rollup -c -w",
     "release": "bumpp package.json --commit --push --tag"
