@@ -1,30 +1,18 @@
 {
   "compilerOptions": {
-    "strict": true,
-    "target": "esnext",
+    "target": "ES5",
     "module": "esnext",
     "moduleResolution": "node",
-    "declaration": true,
-    "baseUrl": "./",
-    "useDefineForClassFields": true,
+    "strict": true,
     "jsx": "preserve",
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
-    "types": ["vite/client", "node"],
-    "paths": {
-      "~/*": ["examples/*"]
-    }
+    "declaration": true,
+    "declarationDir": "./",
+    "outDir": "lib"
   },
-  "include": [
-    "examples/**/*.ts",
-    "examples/**/*.vue",
-    "tests/**/*.ts",
-    "packages/**/*.ts",
-    "packages/**/*.vue",
-    "typings/shims-vue.d.ts",
-  ],
-  "exclude": ["node_modules"]
-  // "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["packages"],
+  "exclude": ["node_modules", "build", "dist", "example", "rollup.config.js"]
 }

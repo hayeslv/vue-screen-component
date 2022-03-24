@@ -1,5 +1,5 @@
 import type { App } from "vue";
-import HayChart from "./src/hayChart.vue";
+import HayChart from "./src/hayChart111";
 
 // 安装
 HayChart.install = (app: App): void => {
