@@ -1,9 +1,11 @@
+import babel from "@rollup/plugin-babel";
 import nodeResolve from "@rollup/plugin-node-resolve"; // 告诉 Rollup 如何查找外部模块
 import typescript from "rollup-plugin-typescript2";
 import vue from "rollup-plugin-vue"; // 处理vue文件
 import { readdirSync } from "fs"; // 写文件
 import { resolve } from "path";
 
+const extensions = [".ts", ".js", ".tsx"];
 const input = resolve(__dirname, "../packages"); // 入口文件
 const output = resolve(__dirname, "../lib"); // 输出文件
 const config = readdirSync(input)
@@ -47,6 +49,7 @@ config.push({
       abortOnError: false,
       clean: true,
     }),
+    babel({ babelHelpers: "bundled", extensions }),
   ],
   output: {
     name: "index",
