@@ -5,8 +5,7 @@
  */
 
 import type { LegendComponentOption, SeriesOption, TitleComponentOption, TooltipComponentOption } from "echarts";
-import { colorList as defaultColorList } from "~/config/common";
-import { chartConfigChangeSize, _innerPie } from "~/utils";
+import { colorList as defaultColorList, chartConfigChangeSize, _innerPie } from "../../common";
 import type { LegendLocation, PieDataType, SeriesType } from "./type";
 
 // fontsize基位，基于1920*1080。大屏根据具体情况进行调整

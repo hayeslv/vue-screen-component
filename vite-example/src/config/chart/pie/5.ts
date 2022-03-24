@@ -1,6 +1,5 @@
 import type { EChartsOption } from "echarts";
-import { colorList } from "~/config/common";
-import { extend, chartConfigChangeSize } from "~/utils";
+import { colorList, extend, chartConfigChangeSize } from "../../common";
 import { defaultBackgroundColor, defaultTooltip, getLegend } from "./defaultOptions";
 import type { PieDataType } from "./type";
 
