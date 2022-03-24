@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES5",
+    "target": "es5",
     "module": "esnext",
     "moduleResolution": "node",
     "strict": true,
@@ -11,8 +11,8 @@
     "lib": ["esnext", "dom"],
     "declaration": true,
     "declarationDir": "./",
-    "outDir": "lib"
+    "outDir": "build"
   },
   "include": ["packages"],
-  "exclude": ["node_modules", "build", "dist", "example", "rollup.config.js"]
+  "exclude": ["node_modules", "build", "dist", "example", "rollup.config.ts"]
 }
