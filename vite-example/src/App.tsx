@@ -2,7 +2,6 @@ import type { Ref } from "vue";
 import { defineComponent, ref } from "vue";
 import "./style/common.scss";
 import { HayChart } from "hay-ui";
-import { getOption1 as getOption } from "./config/chart/pie";
 import type { EChartsOption } from "echarts";
 
 const demoList = [
