@@ -4,6 +4,12 @@ import { defaultBackgroundColor } from "../../common";
 import { defaultTooltip, getLegend, getSeriesItem } from "../../defaultOptions";
 import type { PieDataType } from "../../types";
 
+/**
+ * 正常饼图
+ * @param dataList
+ * @param params
+ * @returns
+ */
 export const getOption = (dataList: Array<PieDataType>, params: EChartsOption = {}) => {
   const options: EChartsOption = {
     backgroundColor: defaultBackgroundColor,
