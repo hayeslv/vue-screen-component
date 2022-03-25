@@ -1,8 +1,7 @@
-import * as echarts from "echarts";
 import type { PropType } from "vue";
-import { computed, defineComponent, onMounted, onUnmounted, ref, watch } from "vue";
-import { getConfigByType } from "./config/common";
+import { defineComponent, onMounted, onUnmounted, ref, watch } from "vue";
 import type { PieDataType, PieType } from "./config/types";
+import { useChart, useChartSize, useOptions } from "./hooks";
 
 export default defineComponent({
   name: "HayChart",
@@ -14,42 +13,26 @@ export default defineComponent({
     dataList: { type: Array as PropType<PieDataType[]>, default: null },
   },
   setup(props) {
-    const options = ref(props.option);
-    if (props.type) {
-      if (!props.dataList) {
-        console.error("hay-chart：dataList不能为空");
-      } else {
-        options.value = getConfigByType(props.type, props.dataList);
-      }
-    }
-    const style = computed(() => {
-      let str = "";
-      props.width && (str += `width: ${props.width}px;`);
-      props.height && (str += `height: ${props.height}px;`);
-      return str;
-    });
-    let chartInstance: echarts.EChartsType | null = null;
     const chartsRef = ref();
 
-    const echartRender = () => {
-      if (chartInstance) clearEchart();
-      chartInstance = echarts.init(chartsRef.value);
-      // const option = props.option;
-      chartInstance.setOption(options.value);
-    };
-    const clearEchart = () => {
-      chartInstance && chartInstance.dispose();
-      chartInstance = null;
-    };
+    const { clearChart, renderChart } = useChart();
+    const { style } = useChartSize(props.width, props.height);
+    const { options, setOptions, setTypeOptions } = useOptions();
+
+    /* ====== 优先级：option > type&dataList ====== */
+    // 设置 type & dataList 的 option
+    if (props.type && props.dataList) setTypeOptions(props.type, props.dataList);
+    // 设置用户配置的 option
+    props.option && setOptions(props.option);
 
     watch(() => props.option, () => {
-      echartRender();
+      renderChart(chartsRef, options.value);
     });
     onMounted(() => {
-      echartRender();
+      renderChart(chartsRef, options.value);
     });
     onUnmounted(() => {
-      chartInstance && chartInstance.dispose();
+      clearChart();
     });
 
     return { style, chartsRef };

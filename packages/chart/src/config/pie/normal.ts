@@ -1,5 +1,5 @@
 import type { EChartsOption } from "echarts";
-import { extend } from "../common";
+import { extend } from "../../../../shared";
 import { defaultBackgroundColor, defaultTooltip, getLegend, getSeriesItem } from "../defaultOptions";
 import type { PieDataType } from "../types";
 

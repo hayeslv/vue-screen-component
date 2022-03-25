@@ -62,5 +62,3 @@ export const getConfigByType = (type: PieType, dataList: PieDataType[]) => {
   const { getOption } = PieTypeMap[type]();
   return getOption(dataList);
 };
-
-export const extend = Object.assign;
