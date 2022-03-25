@@ -1,10 +1,10 @@
 import type { Ref } from "vue";
 import type { EChartOption, EChartsType } from "echarts";
-import type { PieDataType, PieType } from "./config/types";
+import type { PieDataType, PieType } from "./types";
 import * as echarts from "echarts";
 import { computed, ref } from "vue";
 import { extend } from "../../shared";
-import { getConfigByType } from "./config/common";
+import { getConfigByType } from "./common";
 
 /**
  * 图表的大小

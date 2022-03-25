@@ -1,6 +1,6 @@
 import type { PropType } from "vue";
 import { defineComponent, onMounted, onUnmounted, ref, watch } from "vue";
-import type { PieDataType, PieType } from "./config/types";
+import type { PieDataType, PieType } from "./types";
 import { useChart, useChartSize, useOptions } from "./hooks";
 
 export default defineComponent({

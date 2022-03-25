@@ -5,16 +5,50 @@
  */
 
 import type { LegendComponentOption, SeriesOption, TitleComponentOption, TooltipComponentOption } from "echarts";
-import { colorList as defaultColorList, chartConfigChangeSize, _innerPie } from "./common";
+import { colorList as defaultColorList, chartConfigChangeSize, pageBaseFontSize } from "./common";
 import type { LegendLocation, PieDataType, PieSeriesType } from "./types";
 
-// fontsize基位，基于1920*1080。大屏根据具体情况进行调整
-const baseFontSize = 12;
+interface ChartDataList {
+  name: string
+  value: number
+  itemStyle?: any
+}
 
 /**
- * 默认背景
+ * 饼图内圈虚点
+ * @returns
  */
-export const defaultBackgroundColor = "transparent";
+export const _innerPie = (): ChartDataList[] => {
+  const dataArr = [];
+  for (let i = 0; i < 100; i++) {
+    if (i % 2 === 0) {
+      dataArr.push({
+        name: (i + 1).toString(),
+        value: 1,
+        itemStyle: {
+          normal: {
+            color: "#bbb",
+            borderWidth: 0,
+            borderColor: "#bbb",
+          },
+        },
+      });
+    } else {
+      dataArr.push({
+        name: (i + 1).toString(),
+        value: 5,
+        itemStyle: {
+          normal: {
+            color: "rgba(0,0,0,0)",
+            borderWidth: 0,
+            borderColor: "rgba(0,0,0,0)",
+          },
+        },
+      });
+    }
+  }
+  return dataArr;
+};
 
 /**
  * 默认tooltip
@@ -86,12 +120,12 @@ export const getLegend = (dataList: PieDataType[], type: LegendLocation = "right
         color: "#fff",
         rich: {
           name: {
-            width: chartConfigChangeSize(110, baseFontSize),
-            fontSize: chartConfigChangeSize(16, baseFontSize),
+            width: chartConfigChangeSize(110, pageBaseFontSize),
+            fontSize: chartConfigChangeSize(16, pageBaseFontSize),
           },
           value: {
-            width: chartConfigChangeSize(100, baseFontSize),
-            fontSize: chartConfigChangeSize(16, baseFontSize),
+            width: chartConfigChangeSize(100, pageBaseFontSize),
+            fontSize: chartConfigChangeSize(16, pageBaseFontSize),
           },
         },
       },
@@ -107,12 +141,12 @@ export const getLegend = (dataList: PieDataType[], type: LegendLocation = "right
       icon: "circle",
       top: "bottom",
       left: "center",
-      itemWidth: chartConfigChangeSize(12, baseFontSize),
-      itemHeight: chartConfigChangeSize(12, baseFontSize),
-      itemGap: chartConfigChangeSize(8, baseFontSize),
+      itemWidth: chartConfigChangeSize(12, pageBaseFontSize),
+      itemHeight: chartConfigChangeSize(12, pageBaseFontSize),
+      itemGap: chartConfigChangeSize(8, pageBaseFontSize),
       textStyle: {
         color: "#fff",
-        fontSize: chartConfigChangeSize(12, baseFontSize),
+        fontSize: chartConfigChangeSize(12, pageBaseFontSize),
         borderWidth: 0,
       },
     };

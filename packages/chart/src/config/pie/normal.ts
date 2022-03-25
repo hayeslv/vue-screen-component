@@ -1,7 +1,8 @@
 import type { EChartsOption } from "echarts";
 import { extend } from "../../../../shared";
-import { defaultBackgroundColor, defaultTooltip, getLegend, getSeriesItem } from "../defaultOptions";
-import type { PieDataType } from "../types";
+import { defaultBackgroundColor } from "../../common";
+import { defaultTooltip, getLegend, getSeriesItem } from "../../defaultOptions";
+import type { PieDataType } from "../../types";
 
 export const getOption = (dataList: Array<PieDataType>, params: EChartsOption = {}) => {
   const options: EChartsOption = {
