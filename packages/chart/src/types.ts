@@ -25,3 +25,11 @@ export type LegendLocation = "left" | "right" | "top" | "bottom";
  * 饼图series类型
  */
 export type PieSeriesType = "ring" | "solid";
+
+/**
+ * getOption配置参数
+ */
+export interface OptionConfig {
+  fontsize?: number
+  colorList?: string[]
+}

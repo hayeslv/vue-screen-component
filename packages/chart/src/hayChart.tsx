@@ -1,6 +1,6 @@
 import type { PropType } from "vue";
 import { defineComponent, onMounted, onUnmounted, ref, watch } from "vue";
-import type { ChartType, PieDataType } from "./types";
+import type { ChartType, OptionConfig, PieDataType } from "./types";
 import { useChart, useChartSize, useOptions } from "./hooks";
 
 export default defineComponent({
@@ -8,9 +8,10 @@ export default defineComponent({
   props: {
     width: { type: Number, default: null },
     height: { type: Number, default: null },
-    option: { type: Object, default: () => null },
     type: { type: String as PropType<ChartType>, default: null },
     dataList: { type: Array as PropType<PieDataType[]>, default: null },
+    option: { type: Object, default: () => null },
+    config: { type: Object as PropType<OptionConfig>, default: () => ({}) },
   },
   setup(props) {
     const chartsRef = ref();
@@ -21,7 +22,7 @@ export default defineComponent({
 
     /* ====== 优先级：option > type&dataList ====== */
     // 设置 type & dataList 的 option
-    if (props.type && props.dataList) setTypeOptions(props.type, props.dataList);
+    if (props.type && props.dataList) setTypeOptions(props.type, props.dataList, props.config);
     // 设置用户配置的 option
     props.option && setOptions(props.option);
 

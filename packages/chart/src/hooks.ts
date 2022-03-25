@@ -1,6 +1,6 @@
 import type { Ref } from "vue";
 import type { EChartOption, EChartsType } from "echarts";
-import type { ChartType, PieDataType } from "./types";
+import type { ChartType, OptionConfig, PieDataType } from "./types";
 import * as echarts from "echarts";
 import { computed, ref } from "vue";
 import { extend } from "../../shared";
@@ -68,15 +68,15 @@ export const useOptions = () => {
   const options = ref({});
 
   const setOptions = (op: EChartOption = {}) => {
-    options.value = op;
+    options.value = extend({}, options.value, op);
   };
 
   const extendOptions = (op: EChartOption = {}) => {
     options.value = extend({}, options.value, op);
   };
 
-  const setTypeOptions = (type: ChartType, dataList: PieDataType[]) => {
-    const typeOptions = getConfigByType(type, dataList);
+  const setTypeOptions = (type: ChartType, dataList: PieDataType[], config: OptionConfig) => {
+    const typeOptions = getConfigByType(type, dataList, config);
     options.value = extend({}, options.value, typeOptions);
   };
 

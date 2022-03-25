@@ -3,6 +3,7 @@ import { defineComponent, ref } from "vue";
 import "./style/common.scss";
 import { HayChart } from "hay-ui";
 import { getOption1 as getOption } from "./config/chart/pie";
+import type { EChartsOption } from "echarts";
 
 const demoList = [
   { name: "数字城管", value: 14 },
@@ -14,13 +15,16 @@ const demoList = [
 
 export default defineComponent({
   setup() {
-    const option: Ref = ref(getOption(demoList));
-
-    return { option };
+    const colorList = ["red", "#31DA64", "#FACC14", "#EF4864", "#6236FF", "#B620E0", "#11C2C1"];
+    const option: Ref<EChartsOption> = ref({});
+    option.value = {
+      color: colorList,
+    };
+    return { option, colorList };
   },
   render() {
     return <div>
-      <HayChart type={"pie_ring_shadow"} dataList={demoList} width={600} height={300} />
+      <HayChart type={"pie_ring_shadow"} config={{ colorList: this.colorList }} dataList={demoList} width={600} height={300} />
     </div>;
   },
 });

@@ -1,4 +1,4 @@
-import type { PieDataType, ChartType } from "./types";
+import type { PieDataType, ChartType, OptionConfig } from "./types";
 
 export const colorList = ["#009DFF", "#11C372", "#FDAD43", "#FF4F5C", "#8560FF", "#FF7951", "#93CB23", "#00CAB5", "#5B76FF", "#D343DA"];
 
@@ -31,10 +31,10 @@ const PieTypeMap: any = {
  * @param dataList
  * @returns
  */
-export const getConfigByType = (type: ChartType, dataList: PieDataType[]) => {
+export const getConfigByType = (type: ChartType, dataList: PieDataType[], config: OptionConfig) => {
   const getOption = getOptionFunc(type);
 
-  return getOption(dataList);
+  return getOption(dataList, config);
 };
 
 const getOptionFunc = (type: ChartType) => {
