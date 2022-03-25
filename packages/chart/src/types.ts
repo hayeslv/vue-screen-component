@@ -1,8 +1,12 @@
 
-/**
- * 饼图type
- */
-export type PieType = "normal" | "fanshaped" | "ring" | "ring_dot";
+export type PieType =
+  "pie_normal" |
+  "pie_fanshaped" |
+  "pie_ring" |
+  "pie_ring_dot" |
+  "pie_ring_shadow";
+
+export type ChartType = PieType | "comlun_normal";
 
 /**
  * 饼图数据类型

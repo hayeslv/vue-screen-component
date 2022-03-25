@@ -20,7 +20,7 @@ export default defineComponent({
   },
   render() {
     return <div>
-      <HayChart type={"ring"} dataList={demoList} height={300} />
+      <HayChart type={"pie_ring_shadow"} dataList={demoList} width={600} height={300} />
     </div>;
   },
 });

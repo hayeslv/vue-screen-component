@@ -99,11 +99,12 @@ export const getInnerPie = (center: string[], radius: string[]): SeriesOption =>
 /**
  * 获取饼图Legend
  * @param dataList [{name:..., value:...}]
+ * @param location legend位置
  * @returns legendOption
  */
-export const getLegend = (dataList: PieDataType[], type: LegendLocation = "right") => {
+export const getLegend = (dataList: PieDataType[], location: LegendLocation = "right") => {
   let legend: LegendComponentOption = {};
-  if (type === "right") {
+  if (location === "right") {
     legend = {
       type: "scroll",
       orient: "vertical",
@@ -133,7 +134,7 @@ export const getLegend = (dataList: PieDataType[], type: LegendLocation = "right
     };
   }
 
-  if (type === "bottom") {
+  if (location === "bottom") {
     legend = {
       orient: "horizontal",
       type: "scroll",
@@ -196,7 +197,7 @@ export const getTitle = (title: string | number, subTitle: string | number) => {
 export const getSeriesItem = (
   dataList: Array<PieDataType>,
   type: PieSeriesType = "solid",
-  config: { colorList?: string[] } = {},
+  config: { colorList?: string[]; center?: string[]; radius?: string[] } = {},
 ): SeriesOption => {
   let seriesConfig: SeriesOption;
   if (type === "solid") {
@@ -222,8 +223,8 @@ export const getSeriesItem = (
     seriesConfig = {
       type: "pie",
       z: 3,
-      center: ["30%", "50%"],
-      radius: ["60%", "75%"],
+      center: config.center || ["30%", "50%"],
+      radius: config.radius || ["60%", "75%"],
       clockwise: true,
       avoidLabelOverlap: true,
       itemStyle: {
@@ -236,20 +237,6 @@ export const getSeriesItem = (
       },
       label: {
         show: false,
-        position: "outside",
-        formatter: "{a|{b}：{d}%}\n{hr|}",
-        rich: {
-          hr: {
-            backgroundColor: "t",
-            borderRadius: 3,
-            width: 3,
-            height: 3,
-            padding: [3, 3, 0, -12],
-          },
-          a: {
-            padding: [-30, 15, -20, 15],
-          },
-        },
       },
       data: dataList,
     };
