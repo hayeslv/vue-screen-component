@@ -12,6 +12,11 @@ const demoList = [
   { name: "其他", value: 25 },
 ];
 
+const rateList = [
+  { name: "占比", value: 66 },
+  { name: "剩余", value: 34 },
+];
+
 export default defineComponent({
   setup() {
     const colorList = ["red", "#31DA64", "#FACC14", "#EF4864", "#6236FF", "#B620E0", "#11C2C1"];
@@ -23,7 +28,7 @@ export default defineComponent({
   },
   render() {
     return <div>
-      <HayChart type={"pie_ring_shadow"} config={{ colorList: this.colorList }} dataList={demoList} width={600} height={300} />
+      <HayChart type={"pie_rate"} config={{ colorList: this.colorList }} dataList={rateList} width={600} height={300} />
     </div>;
   },
 });

@@ -23,6 +23,7 @@ const PieTypeMap: any = {
   ring: () => require("./config/pie/ring"),
   ring_dot: () => require("./config/pie/ring_dot"),
   ring_shadow: () => require("./config/pie/ring_shadow"),
+  rate: () => require("./config/pie/rate"),
 };
 
 /**

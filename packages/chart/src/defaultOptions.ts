@@ -162,7 +162,7 @@ export const getLegend = (dataList: PieDataType[], location: LegendLocation = "r
  * @param subTitle
  * @returns title config
  */
-export const getTitle = (title: string | number, subTitle: string | number) => {
+export const getTitle = (title: string | number, subTitle: string | number = "") => {
   const titleConfig: TitleComponentOption = {
     text: `{name|${title}}\n{value|${subTitle}}`,
     top: "center",

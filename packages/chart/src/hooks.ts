@@ -8,8 +8,8 @@ import { getConfigByType } from "./common";
 
 /**
  * 图表的大小
- * @param w 宽
- * @param h 高
+ * @param w 宽度
+ * @param h 高度
  * @returns
  */
 export const useChartSize = (w: number, h: number) => {

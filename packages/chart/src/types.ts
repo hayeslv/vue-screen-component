@@ -4,7 +4,8 @@ export type PieType =
   "pie_fanshaped" |
   "pie_ring" |
   "pie_ring_dot" |
-  "pie_ring_shadow";
+  "pie_ring_shadow" |
+  "pie_rate";
 
 export type ChartType = PieType | "comlun_normal";
 

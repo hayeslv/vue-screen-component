@@ -1,8 +1,3 @@
-/*
- * @Author: Lvhz
- * @Date: 2021-04-14 10:20:23
- * @Description: Description
- */
 
 import type { EChartsOption, SeriesOption, TitleComponentOption } from "echarts";
 import { extend } from "../../../../shared";
