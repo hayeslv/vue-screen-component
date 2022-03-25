@@ -8,6 +8,13 @@ interface OptionConfig {
   fontsize?: number
 }
 
+/**
+ * 扇形
+ * @param dataList
+ * @param params
+ * @param config
+ * @returns
+ */
 export function getOption(dataList: Array<PieDataType>, params: EChartsOption = {}, config: OptionConfig = {}): EChartsOption {
   const { fontsize } = config;
   const options: EChartsOption = {

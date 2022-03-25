@@ -20,6 +20,8 @@ export const chartConfigChangeSize = (fontsize: number, baseSize = 12): number =
 const PieTypeMap = {
   normal: () => require("./config/pie/normal"),
   fanshaped: () => require("./config/pie/fanshaped"),
+  ring: () => require("./config/pie/ring"),
+  ring_dot: () => require("./config/pie/ring_dot"),
 };
 
 /**

@@ -20,7 +20,7 @@ export default defineComponent({
   },
   render() {
     return <div>
-      <HayChart type={"fanshaped"} dataList={demoList} height={300} />
+      <HayChart type={"ring"} dataList={demoList} height={300} />
     </div>;
   },
 });

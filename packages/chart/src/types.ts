@@ -2,7 +2,7 @@
 /**
  * 饼图type
  */
-export type PieType = "normal" | "fanshaped";
+export type PieType = "normal" | "fanshaped" | "ring" | "ring_dot";
 
 /**
  * 饼图数据类型
