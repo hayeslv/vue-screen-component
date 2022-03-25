@@ -1,6 +1,6 @@
 {
   "name": "hay-ui",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "main": "dist/index.umd.js",
   "module": "dist/index.esm.js",
   "unpkg": "dist/index.min.js",
