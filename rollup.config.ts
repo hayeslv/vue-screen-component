@@ -17,27 +17,23 @@ export default [
   {
     input: "packages/index.ts",
     output: [
-      // {
-      //   name: "HayUI",
-      //   file: pkg.main,
-      //   format: "umd",
-      //   globals,
-      // },
+      {
+        name: "HayUI",
+        file: pkg.main,
+        format: "umd",
+        globals,
+      },
       {
         file: pkg.module,
         format: "es",
       },
-      // {
-      //   file: pkg.main,
-      //   format: "cjs",
-      // },
-      // {
-      //   name: "HayUI",
-      //   file: pkg.unpkg,
-      //   format: "umd",
-      //   plugins: [terser()],
-      //   globals,
-      // },
+      {
+        name: "HayUI",
+        file: pkg.unpkg,
+        format: "umd",
+        plugins: [terser()],
+        globals,
+      },
     ],
     plugins: [
       external(),
@@ -48,6 +44,7 @@ export default [
       //   rollupCommonJSResolveHack: true,
       //   clean: true
       // }),
+      // , exclude: "node_modules/**"
       babel({ babelHelpers: "bundled", extensions }),
       resolve(),
       commonjs({

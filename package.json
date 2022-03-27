@@ -1,6 +1,8 @@
 {
   "name": "hay-ui",
   "version": "0.3.1",
+  "license": "MIT",
+  "author": "Hayes Lv<417703682@qq.com>(https://github.com/hayeslv/)",
   "main": "dist/index.umd.js",
   "module": "dist/index.esm.js",
   "unpkg": "dist/index.min.js",
@@ -19,6 +21,7 @@
     "@rollup/plugin-node-resolve": "^13.0.2",
     "@rollup/plugin-typescript": "^8.2.5",
     "@types/echarts": "^4.9.13",
+    "@types/video.js": "^7.3.32",
     "@vue/babel-plugin-jsx": "^1.1.1",
     "bumpp": "^7.1.1",
     "echarts": "^5.3.1",
@@ -57,5 +60,9 @@
   "engines": {
     "node": ">=12",
     "npm": ">=6"
+  },
+  "dependencies": {
+    "video.js": "^7.18.1",
+    "videojs-contrib-hls": "^5.15.0"
   }
 }
