@@ -9,8 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.2.25",
-    "hay-ui": "file:../"
+    "hay-ui": "file:../",
+    "vue": "^3.2.25"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.2.0",

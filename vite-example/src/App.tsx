@@ -1,7 +1,7 @@
 import type { Ref } from "vue";
 import { defineComponent, ref } from "vue";
 import "./style/common.scss";
-import { HayChart, HayVideo } from "hay-ui";
+import { HayChart } from "hay-ui";
 import type { EChartsOption } from "echarts";
 
 const demoList = [

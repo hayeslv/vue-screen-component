@@ -35,6 +35,8 @@
     "sass": "^1.49.9",
     "tslib": "^2.3.0",
     "typescript": "^4.5.4",
+    "video.js": "^7.18.1",
+    "videojs-contrib-hls": "^5.15.0",
     "vue": "^3.2.25"
   },
   "peerDependencies": {
@@ -60,9 +62,5 @@
   "engines": {
     "node": ">=12",
     "npm": ">=6"
-  },
-  "dependencies": {
-    "video.js": "^7.18.1",
-    "videojs-contrib-hls": "^5.15.0"
   }
 }

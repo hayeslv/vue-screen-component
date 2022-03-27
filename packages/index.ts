@@ -2,13 +2,13 @@ import type { App } from "vue";
 
 /* 基础组件 start */
 import HayChart from "./Chart"; // 图表
-import HayVideo from "./Video"; // 图表
+// import HayVideo from "./Video"; // 视频
 /* 基础组件 end */
 
 // 所有组件
 const components: any[] = [
   HayChart,
-  HayVideo,
+  // HayVideo,
 ];
 
 /**
@@ -23,7 +23,7 @@ const install = (app: App) => {
 
 export {
   HayChart,
-  HayVideo,
+  // HayVideo,
 };
 
 // 全部导出

@@ -35,6 +35,7 @@ export default [
         globals,
       },
     ],
+    // compact: false,
     plugins: [
       external(),
       scss({
@@ -45,7 +46,7 @@ export default [
       //   clean: true
       // }),
       // , exclude: "node_modules/**"
-      babel({ babelHelpers: "bundled", extensions }),
+      babel({ babelrc: true, babelHelpers: "bundled", extensions, exclude: "node_modules/**" }),
       resolve(),
       commonjs({
         extensions,

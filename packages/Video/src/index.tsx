@@ -9,7 +9,7 @@
 // });
 
 import type { Ref } from "vue";
-import { defineComponent, onBeforeUnmount, onMounted, ref, watch } from "vue";
+import { nextTick, defineComponent, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import "video.js/dist/video-js.css";
 import type { VideoJsPlayer } from "video.js";
 import videojs from "video.js";
@@ -28,13 +28,15 @@ export default defineComponent({
 
     const initVideo = () => {
       disposeVideo();
-      videoPlayer.value = videojs("videoPop", {
-        autoplay: true,
-        preload: "auto",
-      }, function onPlayerReady() {
-        props.autoplay && this.play();
-        this.on("error", function(e) {
-          emit("error", e);
+      nextTick(() => {
+        videoPlayer.value = videojs("videoPop", {
+          autoplay: true,
+          preload: "auto",
+        }, function onPlayerReady() {
+          props.autoplay && this.play();
+          this.on("error", function(e) {
+            emit("error", e);
+          });
         });
       });
     };
