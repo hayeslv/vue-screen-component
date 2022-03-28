@@ -1,12 +1,7 @@
 import type { EChartsOption } from "echarts";
-import { extend } from "../../../../shared";
-import { chartConfigChangeSize, colorList, defaultBackgroundColor } from "../../common";
+import { chartConfigChangeSize, colorList as defaultColorList, defaultBackgroundColor } from "../../common";
 import { defaultTooltip, getLegend } from "../../defaultOptions";
-import type { PieDataType } from "../../types";
-
-interface OptionConfig {
-  fontsize?: number
-}
+import type { OptionConfig, PieDataType } from "../../types";
 
 /**
  * 扇形
@@ -15,12 +10,13 @@ interface OptionConfig {
  * @param config
  * @returns
  */
-export function getOption(dataList: Array<PieDataType>, params: EChartsOption = {}, config: OptionConfig = {}): EChartsOption {
+export function getOption(dataList: Array<PieDataType>, config: OptionConfig = {}): EChartsOption {
+  const { colorList } = config;
   const { fontsize } = config;
   const options: EChartsOption = {
     backgroundColor: defaultBackgroundColor,
     tooltip: defaultTooltip(),
-    color: colorList,
+    color: colorList || defaultColorList,
     legend: getLegend(dataList, "bottom"),
     series: [{
       name: "访问来源",
@@ -59,5 +55,5 @@ export function getOption(dataList: Array<PieDataType>, params: EChartsOption = 
       },
     }],
   };
-  return extend(options, params);
+  return options;
 }

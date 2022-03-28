@@ -2,7 +2,7 @@ import type { EChartsOption } from "echarts";
 import { extend } from "../../../../shared";
 import { defaultBackgroundColor } from "../../common";
 import { defaultTooltip, getLegend, getSeriesItem } from "../../defaultOptions";
-import type { PieDataType } from "../../types";
+import type { OptionConfig, PieDataType } from "../../types";
 
 /**
  * 正常饼图
@@ -10,7 +10,7 @@ import type { PieDataType } from "../../types";
  * @param params
  * @returns
  */
-export const getOption = (dataList: Array<PieDataType>, params: EChartsOption = {}) => {
+export const getOption = (dataList: Array<PieDataType>, config: OptionConfig = {}) => {
   const options: EChartsOption = {
     backgroundColor: defaultBackgroundColor,
     tooltip: extend(defaultTooltip(), {
@@ -29,8 +29,8 @@ export const getOption = (dataList: Array<PieDataType>, params: EChartsOption = 
       },
     }),
     series: [
-      getSeriesItem(dataList, "solid"),
+      getSeriesItem(dataList, "solid", config),
     ],
   };
-  return extend(options, params);
+  return options;
 };

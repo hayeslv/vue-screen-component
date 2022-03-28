@@ -2,9 +2,10 @@
 import type { EChartsOption, TooltipComponentOption } from "echarts";
 import { extend } from "../../../../shared";
 import { defaultTooltip, getInnerPie } from "../../defaultOptions";
-import type { PieDataType } from "../../types";
+import type { OptionConfig, PieDataType } from "../../types";
 
-export function getOption(dataList: Array<PieDataType>) {
+export function getOption(dataList: Array<PieDataType>, config: OptionConfig = {}) {
+  const { colorList } = config;
   const nameList = dataList.map(v => v.name);
   const total = dataList.reduce((pre, cur) => pre + cur.value, 0);
   const options: EChartsOption = {
@@ -60,11 +61,17 @@ export function getOption(dataList: Array<PieDataType>) {
                 y: 0,
                 x2: 0,
                 y2: 1,
-                colorStops: [{
-                  offset: 0, color: "#28E8FA", // 0% 处的颜色
-                }, {
-                  offset: 1, color: "#4FADFD", // 100% 处的颜色
-                }],
+                colorStops: (!colorList || colorList.length === 0)
+                  ? [{
+                    offset: 0, color: "#28E8FA", // 0% 处的颜色
+                  }, {
+                    offset: 1, color: "#4FADFD", // 100% 处的颜色
+                  }]
+                  : [{
+                    offset: 0, color: colorList[0], // 0% 处的颜色
+                  }, {
+                    offset: 1, color: colorList[1] || colorList[0], // 100% 处的颜色
+                  }],
               },
             },
           },
@@ -72,7 +79,7 @@ export function getOption(dataList: Array<PieDataType>) {
             name: nameList[1],
             value: dataList[1].value,
             itemStyle: {
-              color: "#E1E8EE",
+              color: (colorList && colorList[2]) || "#E1E8EE",
             },
           },
         ],

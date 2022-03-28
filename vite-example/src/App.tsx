@@ -28,8 +28,7 @@ export default defineComponent({
   },
   render() {
     return <div>
-      <HayChart type={"pie_ring"} config={{ colorList: this.colorList }} dataList={demoList} width={600} height={300} />
-      {/* <HayVideo src="https://www.2021lllllll.com/vid888/202011/26/5fbf177306f73a1d14777b65/3f92db/index.m3u8" /> */}
+      <HayChart type={"pie_fanshaped"} config={{ colorList: this.colorList }} dataList={demoList} width={600} height={300} />
     </div>;
   },
 });
