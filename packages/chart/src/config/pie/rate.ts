@@ -84,7 +84,7 @@ export function getOption(dataList: Array<PieDataType>, config: OptionConfig = {
           },
         ],
       },
-      getInnerPie(["50%", "50%"], ["46%", "50%"]),
+      getInnerPie(config),
     ],
   };
   return options;

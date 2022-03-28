@@ -14,7 +14,7 @@ export const getOption = (dataList: Array<PieDataType>, config: OptionConfig = {
     title: getTitle(title, totalNumber),
     series: [
       getSeriesItem(dataList, "ring", config),
-      getInnerPie(["30%", "50%"], ["52%", "56%"]),
+      getInnerPie(config),
     ],
   };
   return options;

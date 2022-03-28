@@ -33,4 +33,6 @@ export type PieSeriesType = "ring" | "solid";
 export interface OptionConfig {
   fontsize?: number
   colorList?: string[]
+  center?: string[]
+  radius?: string[]
 }

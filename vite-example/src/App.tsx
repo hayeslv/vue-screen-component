@@ -22,16 +22,34 @@ export default defineComponent({
   setup() {
     const option: Ref<EChartsOption> = ref({});
     option.value = {
-      title: {
-        text: "车辆数(辆)",
-      },
+      // title: {
+      //   text: "车辆数(辆)",
+      //   left: "30%",
+      // },
+      // legend: {
+      //   orient: "horizontal",
+      //   top: "bottom",
+      //   left: "center",
+      //   itemWidth: 12,
+      //   itemHeight: 12,
+      //   itemGap: 18,
+      //   textStyle: {
+      //     color: "#fff",
+      //     fontSize: 12,
+      //     borderWidth: 0,
+      //   },
+      // },
     };
 
-    return { option };
+    const config = {
+      // center: ["30%", "50%"],
+    };
+
+    return { option, config };
   },
   render() {
     return <div>
-      <HayChart type={"pie_ring_dot"} dataList={demoList} option={this.option} width={600} height={300} />
+      <HayChart type={"pie_ring_dot"} dataList={demoList} option={this.option} config={this.config} width={600} height={300} />
     </div>;
   },
 });

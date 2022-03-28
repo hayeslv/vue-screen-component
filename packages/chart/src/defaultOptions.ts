@@ -6,7 +6,7 @@
 
 import type { LegendComponentOption, SeriesOption, TitleComponentOption, TooltipComponentOption } from "echarts";
 import { colorList as defaultColorList, chartConfigChangeSize, pageBaseFontSize } from "./common";
-import type { LegendLocation, PieDataType, PieSeriesType } from "./types";
+import type { LegendLocation, OptionConfig, PieDataType, PieSeriesType } from "./types";
 
 interface ChartDataList {
   name: string
@@ -79,13 +79,14 @@ export const defaultTooltip = (): TooltipComponentOption => {
  * @param radius 半径
  * @returns
  */
-export const getInnerPie = (center: string[], radius: string[]): SeriesOption => {
+export const getInnerPie = (config: OptionConfig = {}): SeriesOption => {
+  const { center, radius } = config;
   return {
     type: "pie",
     zlevel: 3,
     silent: true, // 图形是否不响应和触发鼠标事件，默认为 false，即响应和触发鼠标事件。
-    center, // 例：["30%", "50%"]
-    radius, // 例：["52%", "56%"]
+    center: center || ["30%", "50%"], // 例：["30%", "50%"]
+    radius: radius || ["52%", "56%"], // 例：["52%", "56%"]
     label: {
       show: false,
     },
@@ -106,29 +107,30 @@ export const getLegend = (dataList: PieDataType[], location: LegendLocation = "r
   let legend: LegendComponentOption = {};
   if (location === "right") {
     legend = {
+      show: true,
       type: "scroll",
       orient: "vertical",
       left: "55%",
       align: "left",
       top: "middle",
       icon: "circle",
-      formatter: function(name: any) {
-        const item = dataList.find(item => item.name === name);
-        if (!item) return "";
-        return `{name|${item.name}}{value|${item.value}}`;
-      },
+      // formatter: function(name: any) {
+      //   const item = dataList.find(item => item.name === name);
+      //   if (!item) return "";
+      //   return `{name|${item.name}}{value|${item.value}}`;
+      // },
       textStyle: {
         color: "#fff",
-        rich: {
-          name: {
-            width: chartConfigChangeSize(110, pageBaseFontSize),
-            fontSize: chartConfigChangeSize(16, pageBaseFontSize),
-          },
-          value: {
-            width: chartConfigChangeSize(100, pageBaseFontSize),
-            fontSize: chartConfigChangeSize(16, pageBaseFontSize),
-          },
-        },
+        // rich: {
+        //   name: {
+        //     width: chartConfigChangeSize(110, pageBaseFontSize),
+        //     fontSize: chartConfigChangeSize(16, pageBaseFontSize),
+        //   },
+        //   value: {
+        //     width: chartConfigChangeSize(100, pageBaseFontSize),
+        //     fontSize: chartConfigChangeSize(16, pageBaseFontSize),
+        //   },
+        // },
       },
       data: dataList.map(v => v.name),
     };
@@ -136,9 +138,9 @@ export const getLegend = (dataList: PieDataType[], location: LegendLocation = "r
 
   if (location === "bottom") {
     legend = {
-      orient: "horizontal",
-      type: "scroll",
       show: true,
+      type: "scroll",
+      orient: "horizontal",
       icon: "circle",
       top: "bottom",
       left: "center",
