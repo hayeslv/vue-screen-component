@@ -8,11 +8,13 @@ specifiers:
   '@rollup/plugin-node-resolve': ^13.0.2
   '@rollup/plugin-typescript': ^8.2.5
   '@types/echarts': ^4.9.13
+  '@types/ramda': ^0.28.4
   '@types/video.js': ^7.3.32
   '@vue/babel-plugin-jsx': ^1.1.1
   bumpp: ^7.1.1
   echarts: ^5.3.1
   eslint: ^8.11.0
+  ramda: ^0.28.0
   rimraf: ^3.0.2
   rollup: ^2.53.3
   rollup-plugin-peer-deps-external: ^2.2.4
@@ -34,11 +36,13 @@ devDependencies:
   '@rollup/plugin-node-resolve': 13.1.3_rollup@2.70.1
   '@rollup/plugin-typescript': 8.3.1_859e05ab655ea3c900a5f26a0311c0b5
   '@types/echarts': 4.9.13
+  '@types/ramda': 0.28.4
   '@types/video.js': 7.3.32
   '@vue/babel-plugin-jsx': 1.1.1_@babel+core@7.17.8
   bumpp: 7.1.1
   echarts: 5.3.1
   eslint: 8.11.0
+  ramda: 0.28.0
   rimraf: 3.0.2
   rollup: 2.70.1
   rollup-plugin-peer-deps-external: 2.2.4_rollup@2.70.1
@@ -521,6 +525,12 @@ packages:
 
   /@types/node/17.0.21:
     resolution: {integrity: sha512-DBZCJbhII3r90XbQxI8Y9IjjiiOGlZ0Hr32omXIZvwwZ7p4DMMXGrKXVyPfuoBOri9XNtL0UK69jYIBIsRX3QQ==}
+    dev: true
+
+  /@types/ramda/0.28.4:
+    resolution: {integrity: sha512-OVAF7ZrJxcWqxrZXaG1R/910vxAlDK8KBe3387VWcoLhwTUPvc+dpvRmPcoTv7/6up/hfCs9DcxTiICtJEw16A==}
+    dependencies:
+      ts-toolbelt: 6.15.5
     dev: true
 
   /@types/resolve/1.17.1:
@@ -2636,6 +2646,10 @@ packages:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
     dev: true
 
+  /ramda/0.28.0:
+    resolution: {integrity: sha512-9QnLuG/kPVgWvMQ4aODhsBUFKOUmnbUnsSXACv+NCQZcHbeb+v8Lodp8OVxtRULN1/xOyYLLaL6npE6dMq5QTA==}
+    dev: true
+
   /randombytes/2.1.0:
     resolution: {integrity: sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ==}
     dependencies:
@@ -2962,6 +2976,10 @@ packages:
     engines: {node: '>=8.0'}
     dependencies:
       is-number: 7.0.0
+    dev: true
+
+  /ts-toolbelt/6.15.5:
+    resolution: {integrity: sha512-FZIXf1ksVyLcfr7M317jbB67XFJhOO1YqdTcuGaq9q5jLUoTikukZ+98TPjKiP2jC5CgmYdWWYs0s2nLSU0/1A==}
     dev: true
 
   /tsconfig-paths/3.14.0:

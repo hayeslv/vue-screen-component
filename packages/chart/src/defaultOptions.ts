@@ -164,25 +164,23 @@ export const getLegend = (dataList: PieDataType[], location: LegendLocation = "r
  */
 export const getTitle = (title: string | number, subTitle: string | number = "") => {
   const titleConfig: TitleComponentOption = {
-    text: `{name|${title}}\n{value|${subTitle}}`,
     top: "center",
     left: "30%",
-    textStyle: {
-      rich: {
-        name: {
-          fontSize: 14,
-          fontWeight: "normal",
-          color: "#fff",
-          padding: [10, 0],
-        },
-        value: {
-          fontSize: 32,
-          fontWeight: "bold",
-          color: "#bbb",
-        },
-      },
-    },
+    text: title.toString(),
     textAlign: "center",
+    textVerticalAlign: "top",
+    textStyle: {
+      fontSize: 14,
+      fontWeight: "normal",
+      color: "#fff",
+
+    },
+    subtext: subTitle.toString(),
+    subtextStyle: {
+      fontSize: 32,
+      fontWeight: "bold",
+      color: "#bbb",
+    },
   };
   return titleConfig;
 };
