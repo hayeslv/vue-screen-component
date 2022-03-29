@@ -9,14 +9,19 @@ npm i hay-ui@latest
 
 ## 使用
 
-```js
+```ts
+// main.ts
 import { createApp } from "vue";
 import App from "./App.vue";
-import HayUI from "hay-ui";
-import "hay-ui/lib/theme-default/index.css";
+
+import "hay-ui/dist/index.min.css";
 
 const app = createApp(App);
-app.use(HayUI);
 app.mount("#app");
+```
+
+```ts
+// component
+import { HayChart, HayPanelBac } from "hay-ui";
 ```
 
