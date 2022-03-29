@@ -19,7 +19,7 @@
   },
   "include": [
     "packages",
-    "typings/shims-vue.d.ts",
+    "typings/*",
   ],
   "exclude": ["node_modules", "build", "dist", "example", "rollup.config.ts"]
 }

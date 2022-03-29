@@ -1,9 +1,8 @@
 import type { Ref } from "vue";
 import { defineComponent, ref } from "vue";
 import "./style/common.scss";
-import { HayChart } from "hay-ui";
+import { HayChart, HayPanelBac } from "hay-ui";
 import type { EChartsOption } from "echarts";
-import * as R from "ramda";
 
 const demoList = [
   { name: "数字城管", value: 14 },
@@ -50,6 +49,7 @@ export default defineComponent({
   render() {
     return <div>
       <HayChart type={"pie_ring_dot"} dataList={demoList} option={this.option} config={this.config} width={600} height={300} />
+      <HayPanelBac />
     </div>;
   },
 });

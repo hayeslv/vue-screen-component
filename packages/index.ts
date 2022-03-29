@@ -5,10 +5,14 @@ import HayChart from "./Chart"; // 图表
 // import HayVideo from "./Video"; // 视频
 /* 基础组件 end */
 
+/* 样式组件 */
+import HayPanelBac from "./PanelBac"; // 背景面板
+
 // 所有组件
 const components: any[] = [
   HayChart,
   // HayVideo,
+  HayPanelBac,
 ];
 
 /**
@@ -24,6 +28,7 @@ const install = (app: App) => {
 export {
   HayChart,
   // HayVideo,
+  HayPanelBac,
 };
 
 // 全部导出

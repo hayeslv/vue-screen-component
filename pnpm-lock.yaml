@@ -17,6 +17,7 @@ specifiers:
   ramda: ^0.28.0
   rimraf: ^3.0.2
   rollup: ^2.53.3
+  rollup-plugin-img: ^1.1.0
   rollup-plugin-peer-deps-external: ^2.2.4
   rollup-plugin-postcss: ^4.0.1
   rollup-plugin-scss: ^3.0.0
@@ -45,6 +46,7 @@ devDependencies:
   ramda: 0.28.0
   rimraf: 3.0.2
   rollup: 2.70.1
+  rollup-plugin-img: 1.1.0
   rollup-plugin-peer-deps-external: 2.2.4_rollup@2.70.1
   rollup-plugin-postcss: 4.0.2
   rollup-plugin-scss: 3.0.0
@@ -2693,6 +2695,12 @@ packages:
     hasBin: true
     dependencies:
       glob: 7.2.0
+    dev: true
+
+  /rollup-plugin-img/1.1.0:
+    resolution: {integrity: sha512-44JyY0wBQFNjM2pB7Yv1uUwMW4S1bjdnzLmUPShrDeACSMvn798i9ttwiBkfls+QjSY0qLrNqMacUTDX93Q0MA==}
+    dependencies:
+      rollup-pluginutils: 2.8.2
     dev: true
 
   /rollup-plugin-peer-deps-external/2.2.4_rollup@2.70.1:

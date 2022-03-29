@@ -4,6 +4,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 // import typescript2 from 'rollup-plugin-typescript2'
 import { terser } from "rollup-plugin-terser";
+import image from "rollup-plugin-img";
 import pkg from "./package.json";
 import external from "rollup-plugin-peer-deps-external";
 import scss from "rollup-plugin-scss";
@@ -38,6 +39,12 @@ export default [
     // compact: false,
     plugins: [
       external(),
+      image({
+        output: "dist/images", // default the root
+        extensions: /\.(png|jpg|jpeg|gif|svg)$/,
+        limit: 8192, // default 8192(8k)
+        exclude: "node_modules/**",
+      }),
       scss({
         output: "dist/index.min.css",
       }),

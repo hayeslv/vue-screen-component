@@ -1,0 +1,34 @@
+.panel-bac{
+  position: relative;
+  background-color: rgba(5,19,33, 0.75);
+  border-image: linear-gradient(180deg, rgba(15,74,90,0.00) 9%, rgba(42,141,249,0.65) 14%, rgba(13,64,73,0.11) 18%, rgba(8,25,33,0.00) 33%, rgba(42,141,249,0.53) 38%, rgba(8,23,33,0.12) 43%, rgba(22,87,108,0.09) 58%, #2aa0f9 64%, rgba(7,72,88,0.20) 67%, rgba(9,23,35,0.18) 81%, rgba(42,141,249,0.52) 86%, rgba(13,21,35,0.09) 93%, rgba(20,67,109,0.27) 2%, rgba(9,41,51,0.00) 100%, rgba(8,43,54,0.00)) 2 2;
+  box-shadow: 0px 0px 16px 0px rgba(58,134,255,0.56) inset;
+  min-height: 100px;
+  >img{
+    position: absolute;
+  }
+  >.part1{
+    left: 0;
+    top: 0;
+  }
+  >.part2{
+    right: 0;
+    top: 0;
+  }
+  >.part3 {
+    bottom: 0;
+    left: 0;
+  }
+  >.part4{
+    bottom: 0;
+    right: 0;
+  }
+  >.title{
+    padding-left: 24px;
+    padding-top: 20px;
+    color: #74F4FF;
+    font-size: 20px;
+    font-weight: bold;
+    background: linear-gradient(0deg,rgba(25,148,255,0.00) 0%, rgba(25,148,255,0.30));
+  }
+}
