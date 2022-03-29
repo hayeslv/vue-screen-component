@@ -36,7 +36,7 @@ export default defineComponent({
       {
         this.title && <div class="title">{this.title}</div>
       }
-      {/* <slot /> */}
+      { this.$slots.default && this.$slots.default() }
     </div>;
   },
 });
