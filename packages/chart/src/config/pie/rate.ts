@@ -6,6 +6,9 @@ import type { OptionConfig, PieDataType } from "../../types";
 
 export function getOption(dataList: Array<PieDataType>, config: OptionConfig = {}) {
   const { colorList } = config;
+  // 默认center
+  !config.center && (config.center = ["50%", "50%"]);
+
   const nameList = dataList.map(v => v.name);
   const total = dataList.reduce((pre, cur) => pre + cur.value, 0);
   const options: EChartsOption = {
@@ -40,7 +43,7 @@ export function getOption(dataList: Array<PieDataType>, config: OptionConfig = {
         type: "pie",
         clockwise: true,
         center: ["50%", "50%"],
-        radius: ["55%", "70%"],
+        radius: ["60%", "70%"],
         label: {
           show: false,
         },

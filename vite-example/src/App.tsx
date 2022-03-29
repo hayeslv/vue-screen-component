@@ -48,10 +48,10 @@ export default defineComponent({
   },
   render() {
     return <div>
-      <HayChart type={"pie_ring_dot"} dataList={demoList} option={this.option} config={this.config} width={600} height={300} />
+      {/* <HayChart type={"pie_ring_dot"} dataList={demoList} option={this.option} config={this.config} width={600} height={300} /> */}
       <HayPanelBac
         width={600}
-        v-slots={() => <HayChart type={"pie_ring_dot"} dataList={demoList} option={this.option} config={this.config} width={600} height={300} />}
+        v-slots={() => <HayChart type={"pie_ring_shadow"} dataList={demoList} option={this.option} config={this.config} width={600} height={300} />}
       >
       </HayPanelBac>
     </div>;

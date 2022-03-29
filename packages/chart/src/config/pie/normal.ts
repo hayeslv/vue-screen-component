@@ -27,6 +27,20 @@ export const getOption = (dataList: Array<PieDataType>, config: OptionConfig = {
         if (!item) return "";
         return `{name|${item.name}}{value|${item.value} }`;
       },
+      textStyle: {
+        color: "#fff",
+        rich: {
+          name: {
+            width: 130,
+            fontSize: 16,
+            color: "#BBBBBB",
+          },
+          value: {
+            width: 100,
+            fontSize: 16,
+          },
+        },
+      },
     }),
     series: [
       getSeriesItem(dataList, "solid", config),
