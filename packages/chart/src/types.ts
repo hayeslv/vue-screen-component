@@ -5,7 +5,8 @@ export type PieType =
   "pie_ring" |
   "pie_ring_dot" |
   "pie_ring_shadow" |
-  "pie_rate";
+  "pie_rate" |
+  "pie_dashboard_rate";
 
 export type ChartType = PieType | "comlun_normal";
 

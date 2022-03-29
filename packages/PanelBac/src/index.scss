@@ -1,4 +1,4 @@
-.panel-bac{
+.hay-panel-bac{
   position: relative;
   background-color: rgba(5,19,33, 0.75);
   border-image: linear-gradient(180deg, rgba(15,74,90,0.00) 9%, rgba(42,141,249,0.65) 14%, rgba(13,64,73,0.11) 18%, rgba(8,25,33,0.00) 33%, rgba(42,141,249,0.53) 38%, rgba(8,23,33,0.12) 43%, rgba(22,87,108,0.09) 58%, #2aa0f9 64%, rgba(7,72,88,0.20) 67%, rgba(9,23,35,0.18) 81%, rgba(42,141,249,0.52) 86%, rgba(13,21,35,0.09) 93%, rgba(20,67,109,0.27) 2%, rgba(9,41,51,0.00) 100%, rgba(8,43,54,0.00)) 2 2;
@@ -24,6 +24,7 @@
     right: 0;
   }
   >.title{
+    padding: 10px 20px;
     text-align: left;
     color: #74F4FF;
     font-size: 20px;

@@ -28,7 +28,7 @@ export default defineComponent({
     return { bacStyle, iconStyle };
   },
   render() {
-    return <div class="panel-bac" style={this.bacStyle}>
+    return <div class="hay-panel-bac" style={this.bacStyle}>
       <img class="part1" style={ this.iconStyle } src={panelImg1} alt="" />
       <img class="part2" style={ this.iconStyle } src={panelImg2} alt="" />
       <img class="part3" style={ this.iconStyle } src={panelImg3} alt="" />
