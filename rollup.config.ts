@@ -42,7 +42,7 @@ export default [
       image({
         output: "dist/images", // default the root
         extensions: /\.(png|jpg|jpeg|gif|svg)$/,
-        limit: 8192, // default 8192(8k)
+        limit: 81920, // default 8192  (81920 -> 80k)
         exclude: "node_modules/**",
       }),
       scss({

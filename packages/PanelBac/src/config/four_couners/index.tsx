@@ -9,7 +9,7 @@ export default defineComponent({
   props: {
     title: { type: String, default: null },
     iconsize: { type: Number, default: 40 },
-    slots: { type: Object, default: null },
+    slots: { type: Object, default: () => ({}) },
   },
   setup(props) {
     const iconStyle = computed(() => ({
@@ -20,7 +20,7 @@ export default defineComponent({
     return { iconStyle };
   },
   render() {
-    return <div class="hay-panel-bac">
+    return <div class="hay-panelbac-four-counters">
       <img class="part1" style={this.iconStyle} src={panelImg1} alt="" />
       <img class="part2" style={this.iconStyle} src={panelImg2} alt="" />
       <img class="part3" style={this.iconStyle} src={panelImg3} alt="" />
