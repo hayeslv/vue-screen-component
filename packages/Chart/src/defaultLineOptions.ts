@@ -1,5 +1,5 @@
 import { graphic } from "echarts";
-import type { SeriesOption } from "echarts";
+import type { LineSeriesOption, TooltipComponentOption, GridComponentOption, LegendComponentOption } from "echarts";
 import { colorList as defaultColorList, hexToRgba } from "./common";
 import type { LineDataType, LineSeriesType } from "./types";
 
@@ -14,10 +14,10 @@ export const getLineSeriesItem = (
   data: Array<LineDataType> = [],
   type: LineSeriesType = "line",
   config: { smooth?: boolean; symbol?: string; colorList?: string[] } = {},
-): Array<SeriesOption> => {
-  const arr = [];
+): Array<LineSeriesOption> => {
+  const arr: Array<LineSeriesOption> = [];
   data.forEach((e, i) => {
-    const seriesConfig: SeriesOption = {
+    const seriesConfig: LineSeriesOption = {
       name: e.name,
       type: "line",
       data: e.value,
@@ -27,19 +27,17 @@ export const getLineSeriesItem = (
     };
     if (type === "area") {
       seriesConfig.areaStyle = {
-        normal: {
-          color: new graphic.LinearGradient(0, 0, 0, 1,
-            [{
-              offset: 0,
-              color: config.colorList ? hexToRgba(colorList[i], 0.2) : hexToRgba(defaultColorList[i], 0.2),
-            }, {
-              offset: 1,
-              color: config.colorList ? hexToRgba(colorList[i], 0) : hexToRgba(defaultColorList[i], 0),
-            }],
-          ),
-          shadowColor: config.colorList ? hexToRgba(colorList[i], 0.1) : hexToRgba(defaultColorList[i], 0.1),
-          shadowBlur: 10,
-        },
+        color: new graphic.LinearGradient(0, 0, 0, 1,
+          [{
+            offset: 0,
+            color: config.colorList ? hexToRgba(config.colorList[i], 0.2) : hexToRgba(defaultColorList[i], 0.2),
+          }, {
+            offset: 1,
+            color: config.colorList ? hexToRgba(config.colorList[i], 0) : hexToRgba(defaultColorList[i], 0),
+          }],
+        ),
+        shadowColor: config.colorList ? hexToRgba(config.colorList[i], 0.1) : hexToRgba(defaultColorList[i], 0.1),
+        shadowBlur: 10,
       };
     }
     arr.push(seriesConfig);
@@ -52,7 +50,7 @@ export const getLineSeriesItem = (
  * 默认tooltip样式
  * @returns {}
  */
-export const getDefaultTooltip = () => {
+export const getDefaultTooltip = (): TooltipComponentOption => {
   return {
     trigger: "axis",
     borderColor: "rgba(255,255,255,.3)",
@@ -93,7 +91,7 @@ export const getDefaultTooltip = () => {
  * 默认grid，离底部20%
  * @returns {}
  */
-export const getDefaultGrid = () => {
+export const getDefaultGrid = (): GridComponentOption => {
   return {
     top: "5%",
     left: "5%",
@@ -107,7 +105,7 @@ export const getDefaultGrid = () => {
  * 默认lengend，位于图表下方
  * @returns {}
  */
-export const getDefaultLegend = () => {
+export const getDefaultLegend = (): LegendComponentOption => {
   return {
     show: true,
     bottom: "5%",

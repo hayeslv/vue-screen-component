@@ -53,4 +53,6 @@ export interface OptionConfig {
   colorList?: string[]
   center?: string[]
   radius?: string[]
+  smooth?: boolean
+  symbol?: string
 }

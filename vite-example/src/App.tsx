@@ -14,9 +14,9 @@ const demoList = [
 ];
 
 const demoLineList = [
-  { name:'数量', value:[1,2,3,4,5,6,7] },
-  { name:'数量2', value:[12,23,43,42,56,67,72] }
-]
+  { name: "数量", value: [1, 2, 3, 4, 5, 6, 7] },
+  { name: "数量2", value: [12, 23, 43, 42, 56, 67, 72] },
+];
 
 // const rateList = [
 //   { name: "占比", value: 66 },
@@ -39,14 +39,14 @@ export default defineComponent({
 
     const lineOption: Ref<EChartsOption> = ref({});
     lineOption.value = {
-      xAxis:{
-        data:['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-      }
+      xAxis: {
+        data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      },
     };
     const lineConfig = {
       smooth: false,
-      symbol: "emptyCircle"
-    }
+      symbol: "emptyCircle",
+    };
 
     setTimeout(() => {
       loading.value = true;
@@ -55,7 +55,7 @@ export default defineComponent({
       }, 5000);
     }, 2000);
 
-    return { option, config, loading,lineOption,lineConfig };
+    return { option, config, loading, lineOption, lineConfig };
   },
   render() {
     return <div>
