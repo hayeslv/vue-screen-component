@@ -59,7 +59,8 @@
       "@typescript-eslint/brace-style": [
         "error",
         "1tbs"
-      ]
+      ],
+      "vue/one-component-per-file": "off"
     }
   },
   "engines": {

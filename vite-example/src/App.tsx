@@ -35,6 +35,7 @@ export default defineComponent({
   render() {
     return <div>
       <HayPanelBac
+        type={"four_corners"}
         width={600}
         title={"tittttttttt"}
         v-slots={() => <HayChart type={"pie_dashboard_rate"} dataList={demoList} config={this.config} width={600} height={300} />}
