@@ -1,6 +1,6 @@
 import type { PropType } from "vue";
 import { defineComponent, onMounted, onUnmounted, ref, watch } from "vue";
-import type { ChartType, OptionConfig, PieDataType } from "./types";
+import type { ChartType, OptionConfig, PieDataType, LineDataType } from "./types";
 import { useChart, useChartSize, useOptions } from "./hooks";
 
 export default defineComponent({
@@ -9,7 +9,7 @@ export default defineComponent({
     width: { type: Number, default: null },
     height: { type: Number, default: null },
     type: { type: String as PropType<ChartType>, default: null },
-    dataList: { type: Array as PropType<PieDataType[]>, default: null },
+    dataList: { type: Array as PropType<PieDataType[] | LineDataType[]>, default: null },
     option: { type: Object, default: () => null },
     config: { type: Object as PropType<OptionConfig>, default: () => ({}) },
   },

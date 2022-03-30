@@ -4,7 +4,7 @@
  * @Description: echart options 默认配置
  */
 
-import type { LegendComponentOption, SeriesOption, TitleComponentOption, TooltipComponentOption } from "echarts";
+import type { LegendComponentOption, SeriesOption, TitleComponentOption, TooltipComponentOption, XAXisComponentOption, YAXisComponentOption } from "echarts";
 import { colorList as defaultColorList, chartConfigChangeSize, pageBaseFontSize } from "./common";
 import type { LegendLocation, OptionConfig, PieDataType, PieSeriesType } from "./types";
 
@@ -243,4 +243,48 @@ export const getSeriesItem = (
   }
 
   return seriesConfig!;
+};
+
+/**
+ * 默认x轴样式
+ * @returns {}
+ */
+export const getDefaultXAxis = (): XAXisComponentOption => {
+  return {
+    axisLabel: {
+      color: "rgba(255,255,255,0.65)",
+      fontSize: 12,
+    },
+    axisLine: { // 横坐标轴
+      lineStyle: {
+        color: "rgba(255,255,255,0.3)",
+      },
+    },
+    axisTick: { // 横坐标轴上的脚标（竖线）
+      show: false,
+    },
+  };
+};
+
+/**
+ * 默认Y轴样式
+ * @returns {}
+ */
+export const getDefaultYAxis = (): YAXisComponentOption => {
+  return {
+    axisLabel: {
+      color: "rgba(255,255,255,0.65)",
+      fontSize: 12,
+    },
+    axisLine: { // 竖坐标轴
+      show: false,
+    },
+    splitLine: { // 竖坐标出来的线
+      show: true,
+      lineStyle: {
+        color: "rgba(255,255,255,0.15)",
+        type: "dotted",
+      },
+    },
+  };
 };

@@ -8,7 +8,11 @@ export type PieType =
   "pie_rate" |
   "pie_dashboard_rate";
 
-export type ChartType = PieType | "comlun_normal";
+export type LineType =
+  "line_normal" |
+  "line_area";
+
+export type ChartType = PieType | LineType | "comlun_normal";
 
 /**
  * 饼图数据类型
@@ -16,6 +20,14 @@ export type ChartType = PieType | "comlun_normal";
 export interface PieDataType {
   name: string
   value: number
+}
+
+/**
+ * 线图数据类型
+ */
+export interface LineDataType {
+  name: string
+  value: number[]
 }
 
 /**
@@ -29,6 +41,11 @@ export type LegendLocation = "left" | "right" | "top" | "bottom";
 export type PieSeriesType = "ring" | "solid";
 
 /**
+ * 线图series类型
+ */
+export type LineSeriesType = "line" | "area";
+
+/**
  * getOption配置参数
  */
 export interface OptionConfig {
@@ -36,4 +53,6 @@ export interface OptionConfig {
   colorList?: string[]
   center?: string[]
   radius?: string[]
+  smooth?: boolean
+  symbol?: string
 }
