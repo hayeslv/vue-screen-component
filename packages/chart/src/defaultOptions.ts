@@ -244,3 +244,51 @@ export const getSeriesItem = (
 
   return seriesConfig!;
 };
+
+/**
+ * 默认x轴样式
+ * @returns {}
+ */
+export const getDefaultXAxis = () => {
+  return {
+    axisLabel: {
+      textStyle: {
+        color: "rgba(255,255,255,0.65)",
+        fontSize: 12,
+      },
+    },
+    axisLine: { // 横坐标轴
+      lineStyle: {
+        color: "rgba(255,255,255,0.3)",
+      },
+    },
+    axisTick: { // 横坐标轴上的脚标（竖线）
+      show: false,
+    },
+  };
+};
+
+/**
+ * 默认Y轴样式
+ * @returns {}
+ */
+export const getDefaultYAxis = () => {
+  return {
+    axisLabel: {
+      textStyle: {
+        color: "rgba(255,255,255,0.65)",
+        fontSize: 12,
+      },
+    },
+    axisLine: { // 竖坐标轴
+      show: false,
+    },
+    splitLine: { // 竖坐标出来的线
+      show: true,
+      lineStyle: {
+        color: "rgba(255,255,255,0.15)",
+        type: "dotted",
+      },
+    },
+  };
+};
