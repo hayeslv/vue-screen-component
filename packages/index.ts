@@ -1,4 +1,5 @@
 import type { App } from "vue";
+import "./base.scss";
 
 /* 基础组件 start */
 import HayChart from "./Chart"; // 图表

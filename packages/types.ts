@@ -1,2 +1,5 @@
+import type { App } from "vue";
 
 export type PublicProps<T, U = {}> = Readonly<T> & U; // vue 的公共 props
+
+export type SFCWithInstall<T> = T & { install(app: App): void }; // vue 安装

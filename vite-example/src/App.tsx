@@ -3,7 +3,7 @@ import { defineComponent, ref } from "vue";
 import { HayChart, HayPanelBac } from "hay-ui";
 import type { EChartsOption } from "echarts";
 import "./style/common.scss";
-import EmptyImg from "./assets/empty.png";
+// import EmptyImg from "./assets/empty.png";
 
 const demoList = [
   { name: "数字城管", value: 14 },
@@ -58,7 +58,7 @@ export default defineComponent({
     return { option, config, loading, lineOption, lineConfig };
   },
   render() {
-    return <div>
+    return <div v-loading={true}>
       <HayPanelBac
         type={"title_line"}
         width={600}
@@ -67,13 +67,6 @@ export default defineComponent({
         v-slots={
           () => <HayChart type={"pie_dashboard_rate"} dataList={demoList} config={this.config} width={600} height={300} />
         }
-        // v-slots={
-        //   () => Math.random() > 0.5
-        //     ? <HayChart type={"pie_dashboard_rate"} dataList={demoList} config={this.config} width={600} height={300} />
-        //     : <div>
-        //       <img src={EmptyImg} alt="" />
-        //     </div>
-        // }
       >
       </HayPanelBac>
       <HayPanelBac
