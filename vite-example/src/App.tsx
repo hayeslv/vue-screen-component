@@ -53,8 +53,9 @@ export default defineComponent({
     return { option, config, loading, lineOption, lineConfig };
   },
   render() {
-    return <div v-loading={{ value: this.loading, text: "加载中......" }}>
+    return <div>
       <HayPanelBac
+        v-loading={{ value: this.loading, text: "拼命加载中" }}
         type={"title_line"}
         width={600}
         title={"每日自行车投放比"}

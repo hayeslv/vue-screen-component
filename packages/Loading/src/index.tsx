@@ -12,9 +12,11 @@ export default defineComponent({
     return { title, setTitle };
   },
   render() {
-    return <div class="hay-loading-wrap">
-      <div class="hay-loading"></div>
-      <p class="desc">{this.title}</p>
+    return <div class="hay-loading-mask">
+      <div class="hay-loading-spinner">
+        <i class="hay-icon-loading"></i>
+        {this.title && <p class="hay-loading-text">{this.title}</p>}
+      </div>
     </div>;
   },
 });
