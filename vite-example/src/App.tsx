@@ -48,17 +48,12 @@ export default defineComponent({
       symbol: "emptyCircle",
     };
 
-    setTimeout(() => {
-      loading.value = true;
-      setTimeout(() => {
-        loading.value = false;
-      }, 5000);
-    }, 2000);
+    loading.value = true;
 
     return { option, config, loading, lineOption, lineConfig };
   },
   render() {
-    return <div v-loading={{ value: true, text: "加载中..." }}>
+    return <div v-loading={{ value: this.loading, text: "加载中......" }}>
       <HayPanelBac
         type={"title_line"}
         width={600}

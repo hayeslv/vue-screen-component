@@ -8,6 +8,7 @@ const relativeCls = "g-relative";
 
 // 定义 loading 指令
 const loadingDirective = {
+  name: "loading",
   // 主要写一些钩子函数 在钩子中去实现逻辑
   /*
     指令主要是将 loading 组件生成的DOM动态插入到指令作用的DOM对象上（v-loading=true），
@@ -69,8 +70,14 @@ const loadingDirective = {
     }
     // 如果loading前后值不一致
     if (binding.value !== binding.oldValue) {
-      // 如果是true那么就插入否则删除
-      binding.value ? append(el) : remove(el);
+      // bool的情况
+      if (typeof binding.value === "boolean") {
+        // 如果是true那么就插入否则删除
+        binding.value ? append(el) : remove(el);
+      }
+      if (typeof binding.value === "object" && binding.value !== null) {
+        binding.value.value ? append(el) : remove(el);
+      }
     }
   },
 };

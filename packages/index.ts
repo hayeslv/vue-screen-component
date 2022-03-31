@@ -5,8 +5,8 @@ import "./base.scss";
 import HayChart from "./Chart"; // 图表
 // import HayVideo from "./Video"; // 视频
 
-/* 指令组件 */
-// import HayLoading from "./Loading"; // v-loading指令
+/* 自定义指令 */
+import HayLoading from "./Loading"; // v-loading指令
 
 /* 样式组件 */
 import HayPanelBac from "./PanelBac"; // 背景面板
@@ -18,6 +18,11 @@ const components: any[] = [
   HayPanelBac,
 ];
 
+// 全部自定义指令
+const directions: any[] = [
+  HayLoading,
+];
+
 /**
  * 组件注册
  * @param {App} app Vue 对象
@@ -26,6 +31,8 @@ const components: any[] = [
 const install = (app: App) => {
   // 注册组件
   components.forEach(component => app.component(component.name, component));
+  // 自定义指令注册
+  directions.forEach(direction => app.directive(direction.name, direction));
 };
 
 export {

@@ -2,8 +2,8 @@ import { createApp } from "vue";
 import App from "./App";
 
 import "hay-ui/dist/index.min.css";
-import loadingDirective from "../../packages/Loading";
+import HayUI from "hay-ui";
 
 createApp(App)
-  .directive("loading", loadingDirective)
+  .use(HayUI)
   .mount("#app");
