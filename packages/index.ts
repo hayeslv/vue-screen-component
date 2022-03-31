@@ -1,10 +1,12 @@
 import type { App } from "vue";
 import "./base.scss";
 
-/* 基础组件 start */
+/* 基础组件 */
 import HayChart from "./Chart"; // 图表
 // import HayVideo from "./Video"; // 视频
-/* 基础组件 end */
+
+/* 指令组件 */
+// import HayLoading from "./Loading"; // v-loading指令
 
 /* 样式组件 */
 import HayPanelBac from "./PanelBac"; // 背景面板

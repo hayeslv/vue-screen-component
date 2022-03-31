@@ -43,9 +43,19 @@ const loadingDirective = {
     if (typeof title !== "undefined") {
       (instance as any).setTitle(title);
     }
+    // 看看 binding.value 是否是object类型；如果是的话，再看看其中是否有 text 参数；有则对 title 进行赋值
+    if (typeof binding.value === "object" && binding.value !== null && binding.value.text) {
+      (instance as any).setTitle(binding.value.text);
+    }
+
     // binding.value就是代表指令传递的值
     if (binding.value) {
-      append(el);
+      // 如果binding.value有值，并且是 bool 类型，则直接append
+      if (typeof binding.value === "boolean") append(el);
+      if (typeof binding.value === "object" && binding.value !== null) {
+        // object类型：并且参数 value 为 true， 进行append操作
+        if (binding.value.value) append(el);
+      }
     }
   },
   // 当组件更新的时候执行，因为指令不是一成不变的

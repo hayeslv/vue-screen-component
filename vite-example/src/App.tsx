@@ -58,7 +58,7 @@ export default defineComponent({
     return { option, config, loading, lineOption, lineConfig };
   },
   render() {
-    return <div v-loading={true}>
+    return <div v-loading={{ value: true, text: "加载中..." }}>
       <HayPanelBac
         type={"title_line"}
         width={600}
