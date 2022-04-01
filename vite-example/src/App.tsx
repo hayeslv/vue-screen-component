@@ -1,6 +1,7 @@
 import type { Ref } from "vue";
-import { defineComponent, ref } from "vue";
-import { HayChart, HayPanelBac } from "hay-ui";
+import { onMounted, defineComponent, ref } from "vue";
+
+import { HayChart, HayMessage, HayPanelBac } from "hay-ui";
 import type { EChartsOption } from "echarts";
 import "./style/common.scss";
 // import EmptyImg from "./assets/empty.png";
@@ -49,6 +50,10 @@ export default defineComponent({
     };
 
     loading.value = true;
+
+    onMounted(() => {
+      HayMessage({ type: "warn", message: "警告井盖！！！！" });
+    });
 
     return { option, config, loading, lineOption, lineConfig };
   },
