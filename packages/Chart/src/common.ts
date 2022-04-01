@@ -1,4 +1,4 @@
-import type { PieDataType, ChartType, OptionConfig, LineDataType } from "./types";
+import type { ChartType, OptionConfig, DataType } from "./types";
 
 export const colorList = ["#009DFF", "#11C372", "#FDAD43", "#FF4F5C", "#8560FF", "#FF7951", "#93CB23", "#00CAB5", "#5B76FF", "#D343DA"];
 
@@ -32,13 +32,20 @@ const LineTypeMap: any = {
   area: () => require("./config/line/area"),
 };
 
+const BarTypeMap: any = {
+  normal: () => require("./config/bar/normal"),
+  horizon: () => require("./config/bar/horizon"),
+  pictorial: () => require("./config/bar/pictorial"),
+  pictorial_horizon: () => require("./config/bar/pictorial_horizon"),
+};
+
 /**
  * 根据类型和数据获取图表config配置
  * @param type
  * @param dataList
  * @returns
  */
-export const getConfigByType = (type: ChartType, dataList: PieDataType[] | LineDataType[], config: OptionConfig) => {
+export const getConfigByType = (type: ChartType, dataList: DataType[], config: OptionConfig) => {
   const getOption = getOptionFunc(type);
 
   return getOption(dataList, config);
@@ -53,6 +60,10 @@ const getOptionFunc = (type: ChartType) => {
   if (/^line_/.test(type)) {
     const target = type.replace(/^line_/, "");
     getOption = LineTypeMap[target]().getOption;
+  }
+  if (/^bar_/.test(type)) {
+    const target = type.replace(/^bar_/, "");
+    getOption = BarTypeMap[target]().getOption;
   }
   return getOption;
 };

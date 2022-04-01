@@ -1,5 +1,5 @@
 import { graphic } from "echarts";
-import type { LineSeriesOption, TooltipComponentOption, GridComponentOption, LegendComponentOption } from "echarts";
+import type { LineSeriesOption, TooltipComponentOption } from "echarts";
 import { colorList as defaultColorList, hexToRgba } from "./common";
 import type { LineDataType, LineSeriesType } from "./types";
 
@@ -83,38 +83,6 @@ export const getDefaultTooltip = (): TooltipComponentOption => {
         `;
       });
       return html;
-    },
-  };
-};
-
-/**
- * 默认grid，离底部20%
- * @returns {}
- */
-export const getDefaultGrid = (): GridComponentOption => {
-  return {
-    top: "5%",
-    left: "5%",
-    right: "5%",
-    bottom: "20%",
-    containLabel: true,
-  };
-};
-
-/**
- * 默认lengend，位于图表下方
- * @returns {}
- */
-export const getDefaultLegend = (): LegendComponentOption => {
-  return {
-    show: true,
-    bottom: "5%",
-    icon: "rect",
-    itemHeight: 2,
-    itemWidth: 16,
-    textStyle: {
-      fontSize: 12,
-      color: "rgba(255,255,255,0.8)",
     },
   };
 };

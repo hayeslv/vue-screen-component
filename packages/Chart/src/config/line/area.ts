@@ -1,13 +1,13 @@
 import type { EChartsOption } from "echarts";
 import { defaultBackgroundColor } from "../../common";
-import { getLineSeriesItem, getDefaultTooltip, getDefaultGrid, getDefaultLegend } from "../../defaultLineOptions";
-import { getDefaultXAxis, getDefaultYAxis } from "../../defaultOptions";
+import { getLineSeriesItem, getDefaultTooltip } from "../../defaultLineOptions";
+import { getDefaultXAxis, getDefaultYAxis, getLegendBottom, getGridBottom } from "../../defaultOptions";
 import type { LineDataType, OptionConfig } from "../../types";
 
 export const getOption = (dataList: Array<LineDataType>, config: OptionConfig = {}) => {
   const options: EChartsOption = {
-    grid: getDefaultGrid(),
-    legend: getDefaultLegend(),
+    grid: getGridBottom(),
+    legend: getLegendBottom(),
     tooltip: getDefaultTooltip(),
     xAxis: getDefaultXAxis(),
     yAxis: getDefaultYAxis(),

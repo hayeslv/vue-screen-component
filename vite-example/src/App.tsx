@@ -14,9 +14,8 @@ const demoList = [
   { name: "其他", value: 25 },
 ];
 
-const demoLineList = [
-  { name: "数量", value: [1, 2, 3, 4, 5, 6, 7] },
-  { name: "数量2", value: [12, 23, 43, 42, 56, 67, 72] },
+const demoBarList = [
+  { name: "数量", value: [1, 20, 30, 40, 50, 60, 70] },
 ];
 
 // const rateList = [
@@ -38,24 +37,18 @@ export default defineComponent({
       // center: ["30%", "50%"],
     };
 
-    const lineOption: Ref<EChartsOption> = ref({});
-    lineOption.value = {
-      xAxis: {
+    const barOption: Ref<EChartsOption> = ref({});
+    barOption.value = {
+      yAxis: {
         data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
       },
     };
-    const lineConfig = {
-      smooth: false,
-      symbol: "emptyCircle",
+    const barConfig = {
     };
 
     loading.value = true;
 
-    onMounted(() => {
-      HayMessage({ type: "warn", message: "警告井盖！！！！" });
-    });
-
-    return { option, config, loading, lineOption, lineConfig };
+    return { option, config, loading, barOption, barConfig };
   },
   render() {
     return <div>
@@ -73,9 +66,9 @@ export default defineComponent({
       <HayPanelBac
         type="four_corners"
         width={600}
-        title="折线图1"
+        title="柱状图1"
       >
-        <HayChart type="line_area" dataList={demoLineList} config={this.lineConfig} option={this.lineOption} width={600} height={300} />
+        <HayChart type="bar_pictorial_horizon" dataList={demoBarList} config={this.barConfig} option={this.barOption} width={600} height={300} />
       </HayPanelBac>
     </div>;
   },

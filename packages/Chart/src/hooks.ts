@@ -1,6 +1,6 @@
 import type { Ref } from "vue";
 import type { EChartOption, EChartsType } from "echarts";
-import type { ChartType, LineDataType, OptionConfig, PieDataType } from "./types";
+import type { ChartType, OptionConfig, DataType } from "./types";
 import * as echarts from "echarts";
 import { computed, ref } from "vue";
 import * as R from "ramda";
@@ -71,7 +71,7 @@ export const useOptions = () => {
     options.value = R.mergeDeepRight(options.value, op);
   };
 
-  const setTypeOptions = (type: ChartType, dataList: PieDataType[] | LineDataType[], config: OptionConfig) => {
+  const setTypeOptions = (type: ChartType, dataList: DataType[], config: OptionConfig) => {
     const typeOptions = getConfigByType(type, dataList, config);
     options.value = R.mergeDeepRight(options.value, typeOptions);
   };
