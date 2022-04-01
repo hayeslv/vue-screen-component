@@ -4,9 +4,9 @@
  * @Description: echart options 默认配置
  */
 
-import type { LegendComponentOption, SeriesOption, TitleComponentOption, TooltipComponentOption, XAXisComponentOption, YAXisComponentOption } from "echarts";
+import type { LegendComponentOption, SeriesOption, TitleComponentOption, TooltipComponentOption, XAXisComponentOption, YAXisComponentOption, GridComponentOption } from "echarts";
 import { colorList as defaultColorList, chartConfigChangeSize, pageBaseFontSize } from "./common";
-import type { LegendLocation, OptionConfig, PieDataType, PieSeriesType } from "./types";
+import type { LegendLocation, OptionConfig, PieDataType, PieSeriesType, LegendIconType } from "./types";
 
 interface ChartDataList {
   name: string
@@ -249,8 +249,9 @@ export const getSeriesItem = (
  * 默认x轴样式
  * @returns {}
  */
-export const getDefaultXAxis = (): XAXisComponentOption => {
+export const getDefaultXAxis = (type: "value" | "category" | "time" | "log" | undefined = "category"): XAXisComponentOption => {
   return {
+    type,
     axisLabel: {
       color: "rgba(255,255,255,0.65)",
       fontSize: 12,
@@ -270,8 +271,9 @@ export const getDefaultXAxis = (): XAXisComponentOption => {
  * 默认Y轴样式
  * @returns {}
  */
-export const getDefaultYAxis = (): YAXisComponentOption => {
+export const getDefaultYAxis = (type: "value" | "category" | "time" | "log" | undefined = "value"): YAXisComponentOption => {
   return {
+    type,
     axisLabel: {
       color: "rgba(255,255,255,0.65)",
       fontSize: 12,
@@ -287,4 +289,50 @@ export const getDefaultYAxis = (): YAXisComponentOption => {
       },
     },
   };
+};
+
+/**
+ * 默认grid，离底部20%
+ * @returns {}
+ */
+export const getGridBottom = (): GridComponentOption => {
+  return {
+    top: "5%",
+    left: "5%",
+    right: "5%",
+    bottom: "20%",
+    containLabel: true,
+  };
+};
+
+/**
+ * lengend，位于图表下方
+ * @returns {}
+ */
+export const getLegendBottom = (type: LegendIconType = "line"): LegendComponentOption => {
+  const obj: LegendComponentOption = {
+    show: true,
+    bottom: "5%",
+    textStyle: {
+      fontSize: 12,
+      color: "rgba(255,255,255,0.8)",
+    },
+  };
+  const dict = {
+    line: {
+      icon: "rect",
+      itemWidth: 16,
+      itemHeight: 2,
+    },
+    bar: {
+      icon: "rect",
+      itemWidth: 20,
+      itemHeight: 10,
+    },
+    pie: {
+      icon: "circle",
+    },
+  };
+  Object.assign(obj, dict[type]);
+  return obj;
 };

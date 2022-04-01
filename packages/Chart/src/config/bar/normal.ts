@@ -1,18 +1,18 @@
 import type { EChartsOption } from "echarts";
 import { defaultBackgroundColor } from "../../common";
-import { getLineSeriesItem, getDefaultTooltip } from "../../defaultLineOptions";
+import { getBarSeriesItem, getDefaultTooltip } from "../../defaultBarOptions";
 import { getDefaultXAxis, getDefaultYAxis, getLegendBottom, getGridBottom } from "../../defaultOptions";
-import type { LineDataType, OptionConfig } from "../../types";
+import type { BarDataType, OptionConfig } from "../../types";
 
-export const getOption = (dataList: Array<LineDataType>, config: OptionConfig = {}) => {
+export const getOption = (dataList: Array<BarDataType>, config: OptionConfig = {}) => {
   const options: EChartsOption = {
     grid: getGridBottom(),
-    legend: getLegendBottom(),
+    legend: getLegendBottom("bar"),
     tooltip: getDefaultTooltip(),
     xAxis: getDefaultXAxis(),
     yAxis: getDefaultYAxis(),
     backgroundColor: defaultBackgroundColor,
-    series: getLineSeriesItem(dataList, "line", config),
+    series: getBarSeriesItem(dataList, config),
   };
   return options;
 };

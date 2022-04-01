@@ -12,7 +12,13 @@ export type LineType =
   "line_normal" |
   "line_area";
 
-export type ChartType = PieType | LineType | "comlun_normal";
+export type BarType =
+  "bar_normal" |
+  "bar_horizon" |
+  "bar_pictorial" |
+  "bar_pictorial_horizon";
+
+export type ChartType = PieType | LineType | BarType | "comlun_normal";
 
 /**
  * 饼图数据类型
@@ -31,6 +37,16 @@ export interface LineDataType {
 }
 
 /**
+ * 柱状图数据类型
+ */
+export interface BarDataType {
+  name: string
+  value: number[]
+}
+
+export type DataType = BarDataType | PieDataType | LineDataType;
+
+/**
  * legend位置
  */
 export type LegendLocation = "left" | "right" | "top" | "bottom";
@@ -46,6 +62,16 @@ export type PieSeriesType = "ring" | "solid";
 export type LineSeriesType = "line" | "area";
 
 /**
+ * 柱状图series类型
+ */
+export type BarSeriesType = "vertical" | "horizon";
+
+/**
+ * legend图标类型
+ */
+export type LegendIconType = "line" | "bar" | "pie";
+
+/**
  * getOption配置参数
  */
 export interface OptionConfig {
@@ -55,4 +81,6 @@ export interface OptionConfig {
   radius?: string[]
   smooth?: boolean
   symbol?: string
+  stack?: string
+  barWidth?: number
 }
