@@ -1,12 +1,13 @@
 import { createVNode, render } from "vue";
 import HayMessage from "./src";
+import type { MessageType } from "./src/types";
 
 // 准备 dom 容器
 const div = document.createElement("div");
 div.setAttribute("class", "message-container");
 document.body.appendChild(div);
 
-export default ({ type, message }: { type?: string; message?: string }) => {
+export default ({ type, message }: { type?: MessageType; message?: string }) => {
   // 1. 导入组件
   // 2. 根据组件创建虚拟节点
   const vnode = createVNode(HayMessage, { type, message });
