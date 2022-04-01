@@ -25,3 +25,7 @@ app.mount("#app");
 import { HayChart, HayPanelBac } from "hay-ui";
 ```
 
+## TODO
+- transition未生效
+- icon
+

@@ -1,6 +1,7 @@
 import type { Ref } from "vue";
-import { defineComponent, ref } from "vue";
-import { HayChart, HayPanelBac } from "hay-ui";
+import { onMounted, defineComponent, ref } from "vue";
+
+import { HayChart, HayMessage, HayPanelBac } from "hay-ui";
 import type { EChartsOption } from "echarts";
 import "./style/common.scss";
 // import EmptyImg from "./assets/empty.png";

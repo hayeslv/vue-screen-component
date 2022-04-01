@@ -4,7 +4,7 @@ import { addClass, removeClass } from "../shared";
 import Loading from "./src";
 
 // 该样式添加在了base.scss中，.g-relative{position: relative}
-const relativeCls = "g-relative";
+const relativeCls = "hay-loading-parent--relative";
 
 // 定义 loading 指令
 const loadingDirective = {
