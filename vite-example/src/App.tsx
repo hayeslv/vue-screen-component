@@ -1,23 +1,23 @@
 import type { Ref } from "vue";
-import { onMounted, defineComponent, ref } from "vue";
+import { defineComponent, ref } from "vue";
 
-import { HayChart, HayMessage, HayPanelBac } from "hay-ui";
+// import { HayChart, HayMessage, HayPanelBac } from "hay-ui";
 import type { EChartsOption } from "echarts";
 import "./style/common.scss";
 import { RouterView } from "vue-router";
 // import EmptyImg from "./assets/empty.png";
 
-const demoList = [
-  { name: "数字城管", value: 14 },
-  { name: "市民热线", value: 12 },
-  { name: "巡查员上报", value: 9 },
-  { name: "日常巡检", value: 22 },
-  { name: "其他", value: 25 },
-];
+// const demoList = [
+//   { name: "数字城管", value: 14 },
+//   { name: "市民热线", value: 12 },
+//   { name: "巡查员上报", value: 9 },
+//   { name: "日常巡检", value: 22 },
+//   { name: "其他", value: 25 },
+// ];
 
-const demoBarList = [
-  { name: "数量", value: [1, 20, 30, 40, 50, 60, 70] },
-];
+// const demoBarList = [
+//   { name: "数量", value: [1, 20, 30, 40, 50, 60, 70] },
+// ];
 
 // const rateList = [
 //   { name: "占比", value: 66 },

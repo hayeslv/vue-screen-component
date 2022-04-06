@@ -1,11 +1,14 @@
 import { defineComponent } from "vue";
-import { RouterLink } from "vue-router";
+import { RouterView } from "vue-router";
+import SideBar from "~/components/SideBar";
+import "./index.scss";
 
 export default defineComponent({
   setup() {},
   render() {
-    return <div>
-      <RouterLink to="/loading">loading</RouterLink>
+    return <div class="page">
+      <SideBar />
+      <RouterView />
     </div>;
   },
 });

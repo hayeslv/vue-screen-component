@@ -8,6 +8,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "~": resolve(__dirname, "src"),
+      "~component": resolve(__dirname, "src/components"),
     },
     extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
