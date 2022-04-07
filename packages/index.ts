@@ -11,8 +11,6 @@ import HayLoading from "./Loading"; // v-loading指令
 
 /* 样式组件 */
 import HayPanelBac from "./PanelBac";
-// @ts-ignore
-console.error(123); // 背景面板
 
 // 所有组件
 const components: any[] = [

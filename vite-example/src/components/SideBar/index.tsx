@@ -1,8 +1,20 @@
+import type { PropType } from "vue";
 import { defineComponent, ref } from "vue";
 import router from "~/router";
 import "./index.scss";
 
+interface pathsType {
+  path: string
+  name?: string
+}
+
 export default defineComponent({
+  props: {
+    paths: {
+      type: Array as PropType<pathsType[]>,
+      required: true,
+    },
+  },
   setup() {
     const activeMenuItem = ref("");
     const list = ref([
@@ -20,7 +32,7 @@ export default defineComponent({
   render() {
     return <div class="hay-menu">
       {
-        this.list.map(v => (
+        this.paths.map(v => (
           <div
             key={v.path}
             class={["hay-menu-item", v.path === this.activeMenuItem && "is-active"]}
