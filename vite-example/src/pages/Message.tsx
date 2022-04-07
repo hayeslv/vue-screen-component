@@ -1,7 +1,8 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  setup() {},
+  setup() {
+  },
   render() {
     return <div>test message</div>;
   },

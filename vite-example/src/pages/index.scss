@@ -2,3 +2,14 @@
   display: flex;
   
 }
+
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0); // 由慢到快
+}
+.slide-fade-enter-from, .slide-fade-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
+}

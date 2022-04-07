@@ -1,7 +1,7 @@
 import type { EChartsOption } from "echarts";
 import { HayChart, HayPanelBac } from "hay-ui";
 import type { Ref } from "vue";
-import { defineComponent, ref } from "vue";
+import { Transition, defineComponent, ref } from "vue";
 
 const demoList = [
   { name: "数字城管", value: 14 },
@@ -35,6 +35,10 @@ export default defineComponent({
         }
       >
       </HayPanelBac>
+      <Transition name="slide-fade">
+        <div key={this.loading ? "1" : "2"} style={{ display: this.loading ? "block" : "none" }}>hahahahaha</div>
+      </Transition>
+
       <div class="btns" style="margin-top: 20px;">
         <button onClick={() => this.loadingChangeHandler(true)}>显示loading</button>
         <button onClick={() => this.loadingChangeHandler(false)}>隐藏loading</button>
