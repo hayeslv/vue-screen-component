@@ -1,6 +1,6 @@
 
 import type { EChartsOption, SeriesOption, TitleComponentOption } from "echarts";
-import { extend } from "../../../../shared";
+import { extend } from "../../../../../shared";
 import { colorList as defaultColorList, defaultBackgroundColor } from "../../common";
 import { defaultTooltip, getSeriesItem, getTitle } from "../../defaultOptions";
 import type { OptionConfig, PieDataType } from "../../types";

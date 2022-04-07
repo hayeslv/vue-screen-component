@@ -1,6 +1,6 @@
 
 import type { EChartsOption, TooltipComponentOption } from "echarts";
-import { extend } from "../../../../shared";
+import { extend } from "../../../../../shared";
 import { defaultTooltip, getInnerPie } from "../../defaultOptions";
 import type { OptionConfig, PieDataType } from "../../types";
 

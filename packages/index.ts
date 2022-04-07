@@ -2,15 +2,15 @@ import type { App } from "vue";
 import "./base.scss";
 
 /* 基础组件 */
-import HayChart from "./Chart"; // 图表
+import HayChart from "./components/Chart"; // 图表
 // import HayVideo from "./Video"; // 视频
-import HayMessage from "./Message"; // 消息
+import HayMessage from "./components/Message"; // 消息
 
 /* 自定义指令 */
-import HayLoading from "./Loading"; // v-loading指令
+import HayLoading from "./components/Loading"; // v-loading指令
 
 /* 样式组件 */
-import HayPanelBac from "./PanelBac";
+import HayPanelBac from "./components/PanelBac";
 
 // 所有组件
 const components: any[] = [

@@ -1,6 +1,6 @@
 import type { DirectiveBinding } from "vue";
 import { createApp } from "vue";
-import { addClass, removeClass } from "../shared";
+import { addClass, removeClass } from "../../shared";
 import Loading from "./src";
 
 // 该样式添加在了base.scss中，.g-relative{position: relative}
