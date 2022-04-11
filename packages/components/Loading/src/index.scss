@@ -7,7 +7,7 @@
   left: 0;
   background-color: rgba(255, 255, 255, 0.9);
   z-index: 2000;
-  transition: opacity .3s;
+  transition: opacity 2s;
   .hay-loading-spinner {
     position: absolute;
     width: 100%;
@@ -16,16 +16,30 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    i{
-      display: block;
-      width: 30px;
-      height: 30px;
-      border: 2px solid #409eff;
-      border-top-color: transparent;
-      border-radius: 100%;
-
-      animation: circle infinite 0.75s linear;
+    .circular {
+      display: inline;
+      height: 42px;
+      width: 42px;
+      animation: loading-rotate 2s linear infinite;
     }
+    .path {
+      animation: loading-dash 1.5s ease-in-out infinite;
+      stroke-dasharray: 90,150;
+      stroke-dashoffset: 0;
+      stroke-width: 2;
+      stroke: #409eff;
+      stroke-linecap: round;
+    }
+    // i{
+    //   display: block;
+    //   width: 30px;
+    //   height: 30px;
+    //   border: 2px solid #409eff;
+    //   border-top-color: transparent;
+    //   border-radius: 100%;
+
+    //   animation: circle infinite 0.75s linear;
+    // }
     .hay-loading-text{
       color: #409eff;
       margin: 3px 0;
@@ -34,8 +48,28 @@
   }
 }
 
-.el-icon-loading {
+.hay-icon-loading {
   animation: circle infinite 0.75s linear;
+}
+
+@keyframes loading-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes loading-dash {
+  0% {
+    stroke-dasharray: 1,200;
+    stroke-dashoffset: 0;
+}
+50% {
+  stroke-dasharray: 90,150;
+  stroke-dashoffset: -40px;
+}
+100% {
+  stroke-dasharray: 90,150;
+  stroke-dashoffset: -120px;
+}
 }
 
 // 转转转动画
@@ -48,13 +82,24 @@
   }
 }
 
-.fade-enter-active {
+// .fade-enter-active {
+//   transition: all .3s ease;
+// }
+// .fade-leave-active {
+//   transition: all .3s ease;
+// }
+// .fade-enter-from, .fade-leave-to {
+//   transform: translateX(10px);
+//   opacity: 0;
+// }
+
+.hay-loading-fade-enter-active {
   transition: all .3s ease;
 }
-.fade-leave-active {
+.hay-loading-fade-leave-active {
   transition: all .3s ease;
 }
-.fade-enter-from, .fade-leave-to {
-  transform: translateX(10px);
+.hay-loading-fade-enter-from,
+.hay-loading-fade-leave-to {
   opacity: 0;
 }

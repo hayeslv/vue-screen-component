@@ -7,7 +7,7 @@ import HayChart from "./components/Chart"; // 图表
 import HayMessage from "./components/Message"; // 消息
 
 /* 自定义指令 */
-import HayLoading from "./components/Loading"; // v-loading指令
+import HayLoading from "./components/Loading/index"; // v-loading指令
 
 /* 样式组件 */
 import HayPanelBac from "./components/PanelBac";

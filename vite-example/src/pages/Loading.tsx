@@ -13,7 +13,7 @@ const demoList = [
 
 export default defineComponent({
   setup() {
-    const loading = ref(false);
+    const loading = ref(true);
     const option: Ref<EChartsOption> = ref({});
 
     const loadingChangeHandler = (value: boolean) => {
@@ -25,7 +25,7 @@ export default defineComponent({
   render() {
     return <div>
       <HayPanelBac
-        v-loading={{ value: this.loading, text: "拼命加载中" }}
+        v-loading={this.loading}
         type={"title_line"}
         width={600}
         title={"每日自行车投放比"}
@@ -35,9 +35,9 @@ export default defineComponent({
         }
       >
       </HayPanelBac>
-      <Transition name="slide-fade">
+      {/* <Transition name="slide-fade">
         <div key={this.loading ? "1" : "2"} style={{ display: this.loading ? "block" : "none" }}>hahahahaha</div>
-      </Transition>
+      </Transition> */}
 
       <div class="btns" style="margin-top: 20px;">
         <button onClick={() => this.loadingChangeHandler(true)}>显示loading</button>

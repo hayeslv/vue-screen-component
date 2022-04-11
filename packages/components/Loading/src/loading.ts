@@ -1,11 +1,53 @@
-import { createApp, createVNode, h, reactive, toRefs, Transition, vShow, withDirectives } from "vue";
+import { createApp, createVNode, h, reactive, ref, toRefs, Transition, vShow, withDirectives } from "vue";
+import { removeClass } from "../../../shared";
 
 export function createLoadingComponent(options: any) {
+  let afterLeaveTimer: number;
+
+  const afterLeaveFlag = ref(false);
+
   const data = reactive({
     ...options,
     originalPosition: "",
     visible: false,
   });
+
+  function destroySelf() {
+    const target = data.parent;
+    if (!target.vLoadingAddClassList) {
+      let loadingNumber = target.getAttribute("loading-number");
+      loadingNumber = Number.parseInt(loadingNumber as any) - 1;
+      if (!loadingNumber) {
+        removeClass(target, "el-loading-parent--relative");
+        target.removeAttribute("loading-number");
+      } else {
+        target.setAttribute("loading-number", loadingNumber.toString());
+      }
+      removeClass(target, "el-loading-parent--hidden");
+    }
+    remvoeElLoadingChild();
+  }
+  function remvoeElLoadingChild(): void {
+    vm.$el?.parentNode?.removeChild(vm.$el);
+  }
+
+  function close() {
+    const target = data.parent;
+    target.vLoadingAddClassList = undefined;
+    afterLeaveFlag.value = true;
+    clearTimeout(afterLeaveTimer);
+
+    afterLeaveTimer = window.setTimeout(() => {
+      if (afterLeaveFlag.value) {
+        afterLeaveFlag.value = false;
+        destroySelf();
+      }
+    }, 400);
+
+    data.visible = false;
+
+    // options.closed?.();
+  }
 
   // Loading组件
   const hayLoadingComponent = {
@@ -43,7 +85,7 @@ export function createLoadingComponent(options: any) {
           },
           {
             // 默认位置
-            default: withDirectives(
+            default: () => withDirectives(
               createVNode(
                 "div",
                 {
@@ -78,6 +120,7 @@ export function createLoadingComponent(options: any) {
 
   return {
     ...toRefs(data),
+    close,
     vm,
     get $el(): HTMLElement {
       return vm.$el;
