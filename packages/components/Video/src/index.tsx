@@ -1,13 +1,3 @@
-// import { defineComponent } from "vue";
-
-// export default defineComponent({
-//   name: "HayVideo",
-//   setup() {},
-//   render() {
-//     return <div>test</div>;
-//   },
-// });
-
 import type { Ref } from "vue";
 import { nextTick, defineComponent, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import "video.js/dist/video-js.css";

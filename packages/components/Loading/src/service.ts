@@ -1,5 +1,5 @@
 import { nextTick } from "vue";
-import { addClass, getStyle, removeClass } from "../../../shared";
+import { addClass, removeClass } from "../../../shared";
 import { createLoadingComponent } from "./loading";
 
 export const Loading = function(options: any) {
@@ -9,7 +9,7 @@ export const Loading = function(options: any) {
     ...resolved,
   });
 
-  addStyle(resolved.parent, instance);
+  // addStyle(resolved.parent, instance);
   addClassList(resolved.parent, instance);
 
   resolved.parent.appendChild(instance.$el);
@@ -30,19 +30,19 @@ const resolvedOptions = (options: any) => {
   }
   return {
     parent: target === document.body || options.body ? document.body : target,
-    background: options.background || "",
-    svg: options.svg || "",
-    spinner: options.spinner || false,
-    text: options.text || "",
-    customClass: options.customClass || "",
+    // background: options.background || "",
+    // svg: options.svg || "",
+    // spinner: options.spinner || false,
+    // text: options.text || "",
+    // customClass: options.customClass || "",
     visible: options.visible ?? true,
     target,
   };
 };
 
-const addStyle = (parent: HTMLElement, instance: any) => {
-  instance.originalPosition.value = getStyle(parent, "position");
-};
+// const addStyle = (parent: HTMLElement, instance: any) => {
+//   instance.originalPosition.value = getStyle(parent, "position");
+// };
 
 const addClassList = (parent: HTMLElement, instance: any) => {
   if (instance.originalPosition.value !== "absolute" && instance.originalPosition.value !== "fixed") {

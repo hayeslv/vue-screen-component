@@ -1,15 +1,11 @@
-import { isObject } from ".pnpm/@vue+shared@3.2.31/node_modules/@vue/shared";
 import type { Directive, DirectiveBinding } from "vue";
 import { Loading } from "./service";
 
 const INSTANCE_KEY = Symbol("HayLoading");
 
 const createInstance = (el: any, binding: DirectiveBinding) => {
-  // 通过key获取Prop的value
-  const getBindingProp = (key: any) => isObject(binding.value) ? binding.value[key] : undefined;
-
   const options: any = {
-    target: getBindingProp("target") ?? el,
+    target: el,
   };
 
   el[INSTANCE_KEY] = {

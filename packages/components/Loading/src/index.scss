@@ -59,17 +59,17 @@
 }
 @keyframes loading-dash {
   0% {
-    stroke-dasharray: 1,200;
+    stroke-dasharray: 1, 200;
     stroke-dashoffset: 0;
-}
-50% {
-  stroke-dasharray: 90,150;
-  stroke-dashoffset: -40px;
-}
-100% {
-  stroke-dasharray: 90,150;
-  stroke-dashoffset: -120px;
-}
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -40px;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -120px;
+  }
 }
 
 // 转转转动画

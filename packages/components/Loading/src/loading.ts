@@ -14,17 +14,7 @@ export function createLoadingComponent(options: any) {
 
   function destroySelf() {
     const target = data.parent;
-    if (!target.vLoadingAddClassList) {
-      let loadingNumber = target.getAttribute("loading-number");
-      loadingNumber = Number.parseInt(loadingNumber as any) - 1;
-      if (!loadingNumber) {
-        removeClass(target, "el-loading-parent--relative");
-        target.removeAttribute("loading-number");
-      } else {
-        target.setAttribute("loading-number", loadingNumber.toString());
-      }
-      removeClass(target, "el-loading-parent--hidden");
-    }
+    removeClass(target, "el-loading-parent--relative");
     remvoeElLoadingChild();
   }
   function remvoeElLoadingChild(): void {
@@ -32,8 +22,6 @@ export function createLoadingComponent(options: any) {
   }
 
   function close() {
-    const target = data.parent;
-    target.vLoadingAddClassList = undefined;
     afterLeaveFlag.value = true;
     clearTimeout(afterLeaveTimer);
 
@@ -64,13 +52,7 @@ export function createLoadingComponent(options: any) {
             ...(svg ? { innerHTML: svg } : {}),
           },
           [
-            h("circle", {
-              class: "path",
-              cx: "50",
-              cy: "50",
-              r: "20",
-              fill: "none",
-            }),
+            h("circle", { class: "path", cx: "50", cy: "50", r: "20", fill: "none" }),
           ],
         );
         // 旋转器文字
