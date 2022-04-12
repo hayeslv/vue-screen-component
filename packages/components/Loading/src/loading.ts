@@ -1,7 +1,8 @@
 import { createApp, createVNode, h, reactive, ref, toRefs, Transition, vShow, withDirectives } from "vue";
 import { removeClass } from "../../../shared";
+import type { LoadingOptionsResolved } from "./types";
 
-export function createLoadingComponent(options: any) {
+export function createLoadingComponent(options: LoadingOptionsResolved) {
   let afterLeaveTimer: number;
 
   const afterLeaveFlag = ref(false);
@@ -109,3 +110,5 @@ export function createLoadingComponent(options: any) {
     },
   };
 }
+
+export type LoadingInstance = ReturnType<typeof createLoadingComponent>;

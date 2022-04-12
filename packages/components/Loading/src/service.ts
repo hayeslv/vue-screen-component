@@ -1,8 +1,10 @@
 import { nextTick } from "vue";
 import { addClass, removeClass } from "../../../shared";
+import type { LoadingInstance } from "./loading";
 import { createLoadingComponent } from "./loading";
+import type { LoadingOptions, LoadingOptionsResolved } from "./types";
 
-export const Loading = function(options: any) {
+export const Loading = function(options: LoadingOptions = {}) {
   const resolved = resolvedOptions(options);
 
   const instance = createLoadingComponent({
@@ -10,7 +12,7 @@ export const Loading = function(options: any) {
   });
 
   // addStyle(resolved.parent, instance);
-  addClassList(resolved.parent, instance);
+  addClassList(resolved, resolved.parent, instance);
 
   resolved.parent.appendChild(instance.$el);
 
@@ -21,7 +23,7 @@ export const Loading = function(options: any) {
   return instance;
 };
 
-const resolvedOptions = (options: any) => {
+const resolvedOptions = (options: LoadingOptions): LoadingOptionsResolved => {
   let target: HTMLElement;
   if (typeof options.target === "string") {
     target = document.querySelector(options.target) || document.body;
@@ -30,11 +32,14 @@ const resolvedOptions = (options: any) => {
   }
   return {
     parent: target === document.body || options.body ? document.body : target,
-    // background: options.background || "",
-    // svg: options.svg || "",
-    // spinner: options.spinner || false,
-    // text: options.text || "",
-    // customClass: options.customClass || "",
+    background: options.background || "",
+    svg: options.svg || "",
+    svgViewBox: options.svgViewBox || "",
+    spinner: options.spinner || false,
+    text: options.text || "",
+    fullscreen: target === document.body && (options.fullscreen ?? true),
+    lock: options.lock ?? false,
+    customClass: options.customClass || "",
     visible: options.visible ?? true,
     target,
   };
@@ -44,7 +49,7 @@ const resolvedOptions = (options: any) => {
 //   instance.originalPosition.value = getStyle(parent, "position");
 // };
 
-const addClassList = (parent: HTMLElement, instance: any) => {
+const addClassList = (options: LoadingOptions, parent: HTMLElement, instance: LoadingInstance) => {
   if (instance.originalPosition.value !== "absolute" && instance.originalPosition.value !== "fixed") {
     addClass(parent, "hay-loading-parent--relative");
   } else {

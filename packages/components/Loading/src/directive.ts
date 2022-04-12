@@ -1,10 +1,20 @@
-import type { Directive, DirectiveBinding } from "vue";
+import type { Directive, DirectiveBinding, UnwrapRef } from "vue";
+import type { LoadingInstance } from "./loading";
 import { Loading } from "./service";
+import type { LoadingOptions } from "./types";
 
 const INSTANCE_KEY = Symbol("HayLoading");
 
-const createInstance = (el: any, binding: DirectiveBinding) => {
-  const options: any = {
+export type LoadingBinding = boolean | UnwrapRef<LoadingOptions>;
+export interface ElementLoading extends HTMLElement {
+  [INSTANCE_KEY]?: {
+    instance: LoadingInstance
+    options: LoadingOptions
+  }
+}
+
+const createInstance = (el: ElementLoading, binding: DirectiveBinding<LoadingBinding>) => {
+  const options: LoadingOptions = {
     target: el,
   };
 
@@ -14,7 +24,7 @@ const createInstance = (el: any, binding: DirectiveBinding) => {
   };
 };
 
-export const vLoading: Directive = {
+export const vLoading: Directive<ElementLoading, LoadingBinding> = {
   // @ts-ignore
   name: "loading",
   mounted(el, binding) {

@@ -80,5 +80,8 @@
   "engines": {
     "node": ">=12",
     "npm": ">=6"
+  },
+  "dependencies": {
+    "@vueuse/core": "^8.2.5"
   }
 }
