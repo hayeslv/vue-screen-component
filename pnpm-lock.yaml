@@ -13,6 +13,7 @@ specifiers:
   '@types/ramda': ^0.28.4
   '@types/video.js': ^7.3.32
   '@vue/babel-plugin-jsx': ^1.1.1
+  '@vue/shared': ^3.2.32
   '@vueuse/core': ^8.2.5
   bumpp: ^7.1.1
   commitizen: ^4.2.4
@@ -37,6 +38,7 @@ specifiers:
   vue: ^3.2.25
 
 dependencies:
+  '@vue/shared': 3.2.32
   '@vueuse/core': 8.2.5_vue@3.2.31
 
 devDependencies:
@@ -1038,6 +1040,10 @@ packages:
   /@vue/shared/3.2.31:
     resolution: {integrity: sha512-ymN2pj6zEjiKJZbrf98UM2pfDd6F2H7ksKw7NDt/ZZ1fh5Ei39X5tABugtT03ZRlWd9imccoK0hE8hpjpU7irQ==}
     dev: true
+
+  /@vue/shared/3.2.32:
+    resolution: {integrity: sha512-bjcixPErUsAnTQRQX4Z5IQnICYjIfNCyCl8p29v1M6kfVzvwOICPw+dz48nNuWlTOOx2RHhzHdazJibE8GSnsw==}
+    dev: false
 
   /@vueuse/core/8.2.5_vue@3.2.31:
     resolution: {integrity: sha512-5prZAA1Ji2ltwNUnzreu6WIXYqHYP/9U2BiY5mD/650VYLpVcwVlYznJDFcLCmEWI3o3Vd34oS1FUf+6Mh68GQ==}

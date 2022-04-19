@@ -15,7 +15,6 @@ export interface LoadingOptionsResolved {
   beforeClose?: () => boolean
   closed?: () => void
 }
-// Partial：变成可选属性
 export type LoadingOptions = Partial<
 Omit<LoadingOptionsResolved, "parent" | "target"> & {
   target: HTMLElement | string

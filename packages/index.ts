@@ -7,7 +7,7 @@ import HayChart from "./components/Chart"; // 图表
 import HayMessage from "./components/Message"; // 消息
 
 /* 自定义指令 */
-import HayLoading from "./components/Loading/index"; // v-loading指令
+// import HayLoading from "./components/Loading/index"; // v-loading指令
 
 /* 样式组件 */
 import HayPanelBac from "./components/PanelBac";
@@ -21,9 +21,9 @@ const components: any[] = [
 ];
 
 // 全部自定义指令
-const directions: any[] = [
-  HayLoading,
-];
+// const directions: any[] = [
+//   HayLoading,
+// ];
 
 /**
  * 组件注册
@@ -34,7 +34,7 @@ const install = (app: App) => {
   // 注册组件
   components.forEach(component => app.component(component.name, component));
   // 自定义指令注册
-  directions.forEach(direction => app.directive(direction.name, direction));
+  // directions.forEach(direction => app.directive(direction.name, direction));
 };
 
 export {
@@ -49,3 +49,5 @@ export default {
   install,
   ...components,
 };
+
+export * from "./components";

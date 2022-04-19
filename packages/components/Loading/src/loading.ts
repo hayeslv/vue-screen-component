@@ -1,28 +1,58 @@
-import { createApp, createVNode, h, reactive, ref, toRefs, Transition, vShow, withDirectives } from "vue";
+import {
+  Transition,
+  createApp,
+  createVNode,
+  h,
+  reactive,
+  ref,
+  toRefs,
+  vShow,
+  withCtx,
+  withDirectives,
+} from "vue";
 import { removeClass } from "../../../shared";
+
 import type { LoadingOptionsResolved } from "./types";
 
 export function createLoadingComponent(options: LoadingOptionsResolved) {
   let afterLeaveTimer: number;
 
   const afterLeaveFlag = ref(false);
-
   const data = reactive({
     ...options,
     originalPosition: "",
+    originalOverflow: "",
     visible: false,
   });
 
+  function setText(text: string) {
+    data.text = text;
+  }
+
   function destroySelf() {
     const target = data.parent;
-    removeClass(target, "el-loading-parent--relative");
+    if (!target.vLoadingAddClassList) {
+      let loadingNumber: number | string | null =
+        target.getAttribute("loading-number");
+      loadingNumber = Number.parseInt(loadingNumber as any) - 1;
+      if (!loadingNumber) {
+        removeClass(target, "el-loading-parent--relative");
+        target.removeAttribute("loading-number");
+      } else {
+        target.setAttribute("loading-number", loadingNumber.toString());
+      }
+      removeClass(target, "el-loading-parent--hidden");
+    }
     remvoeElLoadingChild();
   }
   function remvoeElLoadingChild(): void {
     vm.$el?.parentNode?.removeChild(vm.$el);
   }
-
   function close() {
+    if (options.beforeClose && !options.beforeClose()) return;
+
+    const target = data.parent;
+    target.vLoadingAddClassList = undefined;
     afterLeaveFlag.value = true;
     clearTimeout(afterLeaveTimer);
 
@@ -32,78 +62,92 @@ export function createLoadingComponent(options: LoadingOptionsResolved) {
         destroySelf();
       }
     }, 400);
-
     data.visible = false;
 
-    // options.closed?.();
+    options.closed?.();
   }
 
-  // Loading组件
-  const hayLoadingComponent = {
-    name: "HayLoading",
+  function handleAfterLeave() {
+    if (!afterLeaveFlag.value) return;
+    afterLeaveFlag.value = false;
+    destroySelf();
+  }
+
+  const elLoadingComponent = {
+    name: "ElLoading",
     setup() {
       return () => {
         const svg = data.spinner || data.svg;
-        // 旋转器图标
         const spinner = h(
           "svg",
           {
             class: "circular",
-            viewBox: data.svgViewBox || "25 25 50 50", // 默认从 25 25 开始，向右侧和下侧延伸 50px
+            viewBox: data.svgViewBox ? data.svgViewBox : "25 25 50 50",
             ...(svg ? { innerHTML: svg } : {}),
           },
           [
-            h("circle", { class: "path", cx: "50", cy: "50", r: "20", fill: "none" }),
+            h("circle", {
+              class: "path",
+              cx: "50",
+              cy: "50",
+              r: "20",
+              fill: "none",
+            }),
           ],
         );
-        // 旋转器文字
+
         const spinnerText = data.text
-          ? h("p", { class: "hay-loading-text" }, [data.text])
+          ? h("p", { class: "el-loading-text" }, [data.text])
           : undefined;
 
         return h(
           Transition,
           {
-            name: "hay-loading-fade",
+            name: "el-loading-fade",
+            onAfterLeave: handleAfterLeave,
           },
           {
-            // 默认位置
-            default: () => withDirectives(
-              createVNode(
-                "div",
-                {
-                  style: {
-                    backgroundColor: data.background || "",
-                  },
-                  class: [
-                    "hay-loading-mask",
-                    data.customClass,
-                  ],
-                },
-                [
-                  h(
-                    "div",
-                    {
-                      class: "hay-loading-spinner",
+            default: withCtx(() => [
+              withDirectives(
+                createVNode(
+                  "div",
+                  {
+                    style: {
+                      backgroundColor: data.background || "",
                     },
-                    [spinner, spinnerText],
-                  ),
-                ],
+                    class: [
+                      "el-loading-mask",
+                      data.customClass,
+                      data.fullscreen ? "is-fullscreen" : "",
+                    ],
+                  },
+                  [
+                    h(
+                      "div",
+                      {
+                        class: "el-loading-spinner",
+                      },
+                      [spinner, spinnerText],
+                    ),
+                  ],
+                ),
+                [[vShow, data.visible]],
               ),
-              [[vShow, data.visible]],
-            ),
+            ]),
           },
         );
       };
     },
   };
 
-  // 创建组件实例并挂载到一个空的div上
-  const vm = createApp(hayLoadingComponent).mount(document.createElement("div"));
+  const vm = createApp(elLoadingComponent).mount(document.createElement("div"));
 
   return {
     ...toRefs(data),
+    setText,
+    remvoeElLoadingChild,
     close,
+    handleAfterLeave,
     vm,
     get $el(): HTMLElement {
       return vm.$el;
